@@ -19,6 +19,12 @@
           </p>
         <% } %>
       <% } else { %>
+        <% if (!index && post.toc) { %>
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目錄</strong>
+            <%- toc(post.content) %>
+          </div>
+        <% } %>
         <% var br = post.content.indexOf('\n') %>
         <% if (br < 0 || !index) { %>
           <%- post.content %>
