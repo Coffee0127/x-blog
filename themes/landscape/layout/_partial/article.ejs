@@ -25,14 +25,21 @@
             <%- toc(post.content) %>
           </div>
         <% } %>
-        <% var br = post.content.indexOf('\n') %>
-        <% if (br < 0 || !index) { %>
+        <%
+           const THRESH_HOLD = 5;   // \n 要出現的次數
+           var newLines = (post.content.match(/\n/g) || []).length;
+           var indexOfThreshHold = -1;
+           for (var i = 0; i < THRESH_HOLD; i++) {
+             indexOfThreshHold = post.content.indexOf('\n', indexOfThreshHold + 1);
+           }
+        %>
+        <% if (newLines < THRESH_HOLD || !index) { %>
           <%- post.content %>
         <% } else { %>
-          <%- post.content.substring(0, br) %>
+          <%- post.content.substring(0, indexOfThreshHold) %>
           <% if (theme.excerpt_link) { %>
             <p class="article-more-link">
-              <a href="<%=url_for(post.path)%>#more"><%= theme.excerpt_link %></a>
+              <a href="<%=url_for(post.path)%>"><%= theme.excerpt_link %></a>
             </p>
           <% } %>
         <% } %>

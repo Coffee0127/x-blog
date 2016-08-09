@@ -21,6 +21,7 @@ _Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵")ˊ_
 ### Read More
 * 方法一：文章中加入 `<!--more-->` 即可 (但是需要自行設置，頗麻煩)
 * 方法二：參考  [Hexo自动添加ReadMore标记](https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/)，修改 `/themes/[主题名]/layout/_partial/article.ejs`，
+  但該篇提供之方法只會於首頁處顯示第一段落，稍微修改成可以決定要顯示的行數 (即 `const THRESH_HOLD = 5`)
     ```
     <div class="article-entry" itemprop="articleBody">
       <% if (post.excerpt && index){ %>
@@ -42,18 +43,31 @@ _Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵")ˊ_
         <%- post.excerpt %>
         <% if (theme.excerpt_link) { %>
           <p class="article-more-link">
-            <a href="<%- config.root %><%- post.path %>#more"><%= theme.excerpt_link %></a>
+            <a href="<%=url_for(post.path)%>#more"><%= theme.excerpt_link %></a>
           </p>
         <% } %>
       <% } else { %>
-        <% var br = post.content.indexOf('\n') %>
-        <% if(br < 0 || !index) { %>
+        <% if (!index && post.toc) { %>
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目錄</strong>
+            <%- toc(post.content) %>
+          </div>
+        <% } %>
+        <%
+           const THRESH_HOLD = 5;   // 要出現的段落數
+           var newLines = (post.content.match(/\n/g) || []).length;
+           var indexOfThreshHold = -1;
+           for (var i = 0; i < THRESH_HOLD; i++) {
+             indexOfThreshHold = post.content.indexOf('\n', indexOfThreshHold + 1);
+           }
+        %>
+        <% if (newLines < THRESH_HOLD || !index) { %>
           <%- post.content %>
         <% } else { %>
-          <%- post.content.substring(0, br) %>
+          <%- post.content.substring(0, indexOfThreshHold) %>
           <% if (theme.excerpt_link) { %>
             <p class="article-more-link">
-              <a href="<%- config.root %><%- post.path %>#more"><%= theme.excerpt_link %></a>
+              <a href="<%=url_for(post.path)%>"><%= theme.excerpt_link %></a>
             </p>
           <% } %>
         <% } %>
