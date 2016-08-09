@@ -137,7 +137,12 @@ disqus_shortname: <剛剛申請的 Shortname>
 sitemap:
     path: sitemap.xml
 ```
-3. 重啟後連線至 [http://localhost:4000/&lt;Blog 名稱&gt;/sitemap.xml](#) 即可看見
+3. 重啟後連線至 [http://localhost:4000/&lt;Blog 名稱&gt;/sitemap.xml](#) 即可看見 sitemap.xml 囉
+4. 提交你的 Sitemap
+  + [Google 網站管理員工具](https://www.google.com/webmasters/tools)
+  + [Yahoo 和 Bing 網站管理員工具](http://www.bing.com/toolbox/webmaster)
+  + [百度站長平台](http://zhanzhang.baidu.com)
+  + [360好搜站長平台](http://zhanzhang.haosou.com)
 
 ### 加入 RSS Feed
 透過 RSS，讓別人訂閱你的文章
