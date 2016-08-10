@@ -83,12 +83,32 @@ _Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵")ˊ_
 disqus_shortname: <剛剛申請的 Shortname>
 ```
 
-### 加入 Google Analytics
-1. 先到 [Google Analytics](https://www.google.com.tw/intl/zh-TW/analytics/) 註冊取得追蹤編號
-2. 修改 `themes/<主題名稱>/_config.yml`，找到 `google_analytics`  後，將追蹤編號貼上即可
+### 加入相關文章
+1. 透過以下指令安裝 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts)
+`$ npm install hexo-list-related-posts --save`
+2. 修改 `/themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- partial('post/nav') %>` 並於前一段落加入 `partial('post/related')`
+3. 接著在 `themes/landscape/layout/_partial/post` 新增 `related.ejs` 檔案 (對應前一步驟之檔名)
+4. 相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 `<%- list_related_posts([options]) %>`，小弟目前樣式為
+```
+<article class="article">
+  <div class="article-inner">
+    <div class="article-header">
+        <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
+    </div>
+    <div class="article-entry">
+      <%- list_related_posts({maxCount: 5, orderBy: 'random'}) %>
+    </div>
+  </div>
+</article>
+```
+並且在 `article.styl` 加入樣式
+```styl
+.related-posts-item
+  font-size: 16px
+```
 
 ### 加入 TOC ( Table Of Content )
-1. 修改 `/themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- post.content %>` 並於前一段落加入以下代碼
+1. 修改 `/themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- post.content %>` 並於前一段落加入以下程式碼
   ```
   <% if (!index && post.toc){ %>
     <div id="toc" class="toc-article">
@@ -99,7 +119,7 @@ disqus_shortname: <剛剛申請的 Shortname>
   ```
   其中 `!index` 讓首頁摘要不產生目錄，`post.toc` 則是需於文章設定 `toc: true` 才生效
 2. 修改樣式，`themes/<主題名稱>/source/css/_partial/article.styl`，於最末端加入以下 CSS 樣式，依個人喜好微調
-```
+```styl
 /*toc*/
 .toc-article
   background #eee
@@ -126,6 +146,10 @@ disqus_shortname: <剛剛申請的 Shortname>
   .toc-child
     margin-left 1em
 ```
+
+### 加入 Google Analytics
+1. 先到 [Google Analytics](https://www.google.com.tw/intl/zh-TW/analytics/) 註冊取得追蹤編號
+2. 修改 `themes/<主題名稱>/_config.yml`，找到 `google_analytics`  後，將追蹤編號貼上即可
 
 ### 加入 sitemap
 「Sitemap」是一種檔案，可以在其中列出網站上的網頁，讓其他搜尋引擎瞭解網站內容架構，以更靈活的方式檢索網站。
