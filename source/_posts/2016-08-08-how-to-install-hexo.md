@@ -91,6 +91,7 @@ author: # 網站作者
 language: # 網站語言
 timezone: # 網站時區，預設使用電腦時區
 ```
+
 #### URL
 這邊要注意 `url` 跟 `root`，當你的網站是放置於子資料夾下時，例如 `http://yoursite.com/child`，
 請將 url 設定為 `http://yoursite.com/child`，root 則設定為 `/child/`。
@@ -102,7 +103,7 @@ note: 子資料夾會有分享連結失效問題，解決方法參考 [Hexo 分�
 url: https://coffee0127.github.io/blog/ #網站的網址
 root: /blog/    #網站的根目錄
 permalink: :year/:month/:day/:title/    # 文章永久連結的格式
-permalink_defaults:
+permalink_defaults:     # 永久連結中各區段的預設值，筆者沒試過XD
 ```
 
 #### Writing
