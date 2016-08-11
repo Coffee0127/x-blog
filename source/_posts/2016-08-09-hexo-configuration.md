@@ -20,7 +20,7 @@ _Icon 代表著網站的精神呢，這當然很重要啊ˋ(′ε‵")ˊ_
 
 ### Read More
 * 方法一：文章中加入 `<!--more-->` 即可 (但是需要自行設置，頗麻煩)
-* 方法二：參考  [Hexo自动添加ReadMore标记](https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/)，修改 `/themes/[主题名]/layout/_partial/article.ejs`，
+* 方法二：參考  [Hexo自动添加ReadMore标记](https://twiceyuan.com/2014/05/25/hexo%E8%87%AA%E5%8A%A8%E6%B7%BB%E5%8A%A0readmore%E6%A0%87%E8%AE%B0/)，修改 `themes/[主题名]/layout/_partial/article.ejs`，
   但該篇提供之方法只會於首頁處顯示第一段落，稍微修改成可以決定要顯示的行數 (即 `const THRESH_HOLD = 5`)
     ```
     <div class="article-entry" itemprop="articleBody">
@@ -86,7 +86,7 @@ disqus_shortname: <剛剛申請的 Shortname>
 ### 加入相關文章
 1. 透過以下指令安裝 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts)
 `$ npm install hexo-list-related-posts --save`
-2. 修改 `/themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- partial('post/nav') %>` 並於前一段落加入 `partial('post/related')`
+2. 修改 `themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- partial('post/nav') %>` 並於前一段落加入 `partial('post/related')`
 3. 接著在 `themes/landscape/layout/_partial/post` 新增 `related.ejs` 檔案 (對應前一步驟之檔名)
 4. 相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 `<%- list_related_posts([options]) %>`，筆者目前樣式為
 ```
@@ -101,14 +101,14 @@ disqus_shortname: <剛剛申請的 Shortname>
   </div>
 </article>
 ```
-並且在 `article.styl` 加入樣式
+並且在 `themes/<主題名稱>/source/css/_partial/article.styl` 加入樣式
 ```styl
 .related-posts-item
   font-size: 16px
 ```
 
 ### 加入 TOC ( Table Of Content )
-1. 修改 `/themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- post.content %>` 並於前一段落加入以下程式碼
+1. 修改 `themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- post.content %>` 並於前一段落加入以下程式碼
   ```
   <% if (!index && post.toc){ %>
     <div id="toc" class="toc-article">
