@@ -134,4 +134,13 @@
 
     $container.removeClass('mobile-nav-on');
   });
+
+  // fix the backtick code block generate <div> leads to iOS8 cannot scrolling
+  $('td.code').each(function(index, element) {
+    var content = $(element).html();
+    content = content
+      .replace(/<div class="line">/g, '<span class="line">')
+      .replace(/<\/div>/g, '</span><br/>');
+    $(element).html(content);
+  });
 })(jQuery);
