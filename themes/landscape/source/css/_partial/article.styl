@@ -60,6 +60,7 @@
     color: color-link
     text-decoration: none
     &:hover
+      color: color-dark-link
       text-decoration: underline
   ul, ol, dl
     margin-top: line-height
@@ -383,9 +384,20 @@ $article-gallery-ctrl
     line-height 1.8em
     li
       list-style-type none
-
   .toc-child
     margin-left 1em
 
-.related-posts-item
-  font-size: 16px
+ul.related-posts
+  margin-left: 0
+  margin-right: 0
+  padding-left: 0
+  list-style: none
+  li.related-posts-item
+    font-size: 16px
+    div.related-posts-item-abstract
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      color: rgb(136, 136, 136)
+      margin-bottom: 10px
+      font-size: 85%
