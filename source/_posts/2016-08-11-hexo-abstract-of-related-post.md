@@ -53,6 +53,16 @@ var striptags = require('striptags');
     }
   }
 ```
+4. 修改文章沒有設置 tags 發生錯誤
+大家要乖乖替文章加上 tag 啊 (誤)
+參考另一段 [pull request](https://github.com/nkmk/hexo-list-related-posts/pull/2/files) 加上檢查即可，程式碼如下
+```js
+  this.post.tags && this.post.tags.each(function(tag){
+    tag.posts.each(function(post){
+      postList.push(post);
+    });
+  });
+```
 
 ### 加入 `generateAbstract: true`
 修改 `themes/[主题名]/layout/_partial/post/related.ejs`  (在 [Hexo 相關設定](/blog/2016/08/09/hexo-configuration/#加入相關文章) 新增的檔案)
