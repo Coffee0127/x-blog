@@ -5,7 +5,7 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-<div style="font-size: 24px;">_“取之於社會，用之於社會”_</div>
+<div style="font-size: 24px;padding-top: 20px;">_“取之於社會，用之於社會”_</div>
 
 從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
 
