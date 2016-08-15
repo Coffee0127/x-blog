@@ -118,7 +118,7 @@ new_post_name: :year-:month-:day-:title.md
 
 接著佈署至 GitHub 請見下一篇 [Hexo 佈署](/blog/2016/08/09/how-to-deploy-to-git)
 
-### 參考網址
+### Reference
 * [Hexo](https://hexo.io/)
 * [使用GitHub和Hexo搭建免费静态Blog](https://wsgzao.github.io/post/hexo-guide/)
 * [如何搭建一个独立博客——简明Github Pages与Hexo教程](http://www.jianshu.com/p/05289a4bc8b2)

@@ -182,7 +182,7 @@ feed:
 ```
 3. 修改 `themes/<主題名稱>/layout/_partial/header.ejs`，將原本 `<%- theme.rss %>` 修改為 `<%=url_for(theme.rss)%>`
 
-### 參考網址
+### Reference
 * [Hexo 安裝教學、心得筆記](https://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo/)
 * [为Hexo博客添加目录](http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/)
 * [如何搭建一个独立博客——简明Github Pages与Hexo教程](http://www.jianshu.com/p/05289a4bc8b2)
