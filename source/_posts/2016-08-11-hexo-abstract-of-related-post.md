@@ -7,7 +7,7 @@ tags: Hexo
 ---
 在 [Hexo 相關設定](/blog/2016/08/09/hexo-configuration/#加入相關文章) 有跟各位介紹過新增“相關文章”功能，
 
-老實說筆者覺得只有標題實在是太空洞了，因此看看原本的 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts) 是否有相關功能
+老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts) 是否有相關功能
 
 測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉<(￣︶￣)>
 
@@ -18,7 +18,7 @@ tags: Hexo
 
 ### 修改 `hexo-list-related-posts`
 檔案路徑為 `<repository>/node_modules/hexo-list-related-posts/lib/index.js`
-查閱筆者發給原作者的 [pull request](https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1) 會比較容易理解差異
+查閱小弟發給原作者的 [pull request](https://github.com/nkmk/hexo-list-related-posts/pull/3/commits/80e9739cb525f9907881d243bd04b90f6a2264d0#diff-1) 會比較容易理解差異
 1. 引入 `striptags` 模組
 ```js
 var striptags = require('striptags');

@@ -13,7 +13,7 @@ tags: Hexo
 
 Google 了一下發現官網有人提出了一樣的問題 [share link wrong with sub path](https://github.com/hexojs/hexo/issues/1812)
 
-還好底下有人提供解決方案，或許之後版本作者就會修正了 (筆者使用 Hexo 版本為 3.2.2)
+還好底下有人提供解決方案，或許之後版本作者就會修正了 (小弟使用 Hexo 版本為 3.2.2)
 
 解決方法其實也不難，僅需修改 `hexo/lib/models/post.js` 即可
 
@@ -39,7 +39,7 @@ Google 了一下發現官網有人提出了一樣的問題 [share link wrong wit
 
 之後重新產生新的 Blog 網頁即可
 
-p.s 僅針對 Blog 放在子資料夾內的才需修改 (好比筆者之類的...XD)
+p.s 僅針對 Blog 放在子資料夾內的才需修改 (好比小弟之類的...XD)
 ```yml
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

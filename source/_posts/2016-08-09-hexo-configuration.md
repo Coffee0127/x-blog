@@ -88,7 +88,7 @@ disqus_shortname: <剛剛申請的 Shortname>
 `$ npm install hexo-list-related-posts --save`
 2. 修改 `themes/<主題名稱>/layout/_partial/article.ejs`，找到 `<%- partial('post/nav') %>` 並於前一段落加入 `partial('post/related')`
 3. 接著在 `themes/landscape/layout/_partial/post` 新增 `related.ejs` 檔案 (對應前一步驟之檔名)
-4. 相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 `<%- list_related_posts([options]) %>`，筆者目前樣式為
+4. 相關文章樣式版型可再依個人喜好自行修改，主要程式碼為 `<%- list_related_posts([options]) %>`，小弟目前樣式為
 ```
 <article class="article">
   <div class="article-inner">

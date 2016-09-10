@@ -15,7 +15,7 @@ toc: true
 * [Creating Project Pages manually](https://help.github.com/articles/creating-project-pages-manually/)
 主要目的為替你的 repository 建立一個名為 `gh-pages` 的 branch
 
-筆者規劃如下 {% img inline /2016/08/09/how-to-deploy-to-git/branch.jpg %}
+小弟規劃如下 {% img inline /2016/08/09/how-to-deploy-to-git/branch.jpg %}
 + master：用來放 Hexo 相關檔案
 + gh-pages：用來放 Hexo 產出之靜態網頁，也就是 Blog
 
