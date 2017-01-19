@@ -85,3 +85,7 @@ deploy:
   repo: https://github.com/Coffee0127/x-blog.git
   branch: gh-pages
   message:
+
+search:
+  path: search.xml
+  field: post

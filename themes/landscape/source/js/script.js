@@ -1,6 +1,9 @@
 (function($){
   // Search
   var $searchWrap = $('#search-form-wrap'),
+    $localSearchInput = $('#local-search-input'),
+    $localSearchResult = $('#local-search-result'),
+    $headerInner = $('#header-inner'),
     isSearchAnim = false,
     searchAnimDuration = 200;
 
@@ -20,14 +23,18 @@
 
     startSearchAnim();
     $searchWrap.addClass('on');
+    $headerInner.removeClass('ovf-h');
     stopSearchAnim(function(){
       $('.search-form-input').focus();
     });
   });
 
-  $('.search-form-input').on('blur', function(){
+  $('.search-form-input').on('blur', function(e) {
     startSearchAnim();
     $searchWrap.removeClass('on');
+    $headerInner.addClass('ovf-h');
+    $localSearchInput.val('');
+    $localSearchResult.empty();
     stopSearchAnim();
   });
 
