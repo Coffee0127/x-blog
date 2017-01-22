@@ -9,7 +9,9 @@ tags: Hexo
 
 老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts) 是否有相關功能
 
-測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉<(￣︶￣)>
+~~測試了一下發現其實是有的，只不過原作者並未提供 API 讓人使用，那就只好自己來囉<(￣︶￣)>~~
+=== 2016-09-11 Updated ===
+原作者已接受 PR，因此不需要再自行修改。不過沒有設置 tags 導致的錯誤，原作者並未修復，因此還是要修改一下XD
 
 ### 安裝 striptags
 先確認你的 `<repository>/node_modules/` 是否有 `striptags` 模組，
