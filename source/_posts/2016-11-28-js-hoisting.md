@@ -7,6 +7,24 @@ tags:
     - JavaScript
     - Must-Know
 ---
+=== 2017-02-19 Updated ===
+因原文寫得不夠清楚~~(其實是之前亂寫一通)~~，導致錯誤的理解
+
+先補上 MDN 的說明：
+{% blockquote Hoisting https://developer.mozilla.org/zh-TW/docs/Glossary/Hoisting MDN%}
+Hoisting was thought up as a general way of thinking about how execution context (specifically the creation and execution phases) work in JavaScript.
+For example, hoisting teaches that variable and function declarations are physically moved to the top your coding, but this is not what happens at all.
+What does happen is the variable and function declarations are put into memory during the compile phase, but stays exactly where you typed it in your coding.  
+{% endblockquote %}
+
+第一段是說 Hoisting 通常被用來理解 JavaScript 的 execution context 如何運行(老實說我現在還是不知道該怎麼翻 context，翻"上下文"總覺得怪怪的...)，分為 creation phase 及 execution phase
+第二段是說 hoisting 總是教我們把 變數宣告 及 宣告式函數 "物理上" 的提升到最上端，但**實際上不是這麼一回事**！
+第三段則是說 變數宣告 及 宣告式函數 會在 compile phase 存入記憶體內，但實際上仍舊待在原本程式碼的位置
+
+最後在 execution phase 時才會逐行執行程式碼。
+
+---
+
 這篇是上完[保哥](https://www.facebook.com/will.fans)的《JavaScript 開發實戰：核心概念篇》筆記之二 ~~(狀態仍顯示為拖稿)~~
 
 **Hoisting** 翻成中文是提升，在 JavaScript 是要提升什麼呢？
@@ -16,7 +34,7 @@ W3Schools [JavaScript Hoisting](http://www.w3schools.com/js/js_hoisting.asp) 是
 Hoisting is JavaScript's default behavior of moving declarations to the top.
 {% endblockquote %}
 
-JavaScript 預設會把**宣告(declarations)提升到最上端**
+JavaScript 預設會把**宣告(declarations)提升到最上端** 【但不是真的將宣告"物理上"提升】
 
 即變數可以先使用，後宣告 (這跟一般程式語言不一樣XD)，以下兩段範例程式碼輸出結果是完全相同的
 
@@ -74,7 +92,7 @@ function foo() {
 })();
 ```
 
-1. 逐行尋找 `var` 及 `function` 宣告，並提升至 function scope 的最上層。因此先將 `var test` 提升，初始化仍維持原位置
+1. 逐行尋找 `var` 及 `function` 宣告，並提升至 function scoped 的最上層。因此先將 `var test` 提升，初始化仍維持原位置
 ```js
 (function() {
     var test;
@@ -85,7 +103,7 @@ function foo() {
 })();
 ```
 
-2. 接著再往下遇到 `function test()`，一樣提升至 function scope 最上層 (注意提升後的位置，是在 `var test` 之後)
+2. 接著再往下遇到 `function test()`，一樣提升至 function scoped 最上層 (注意提升後的位置，是在 `var test` 之後)
 ```js
 (function() {
     var test;
@@ -184,3 +202,7 @@ function foo() {
 2. 函式採用 `函式表示法 (function expression)` 方式宣告 (即 `var test = function() {}`)
 
 可參考範例 [jQuery](https://github.com/jquery/jquery/blob/1.6.2/jquery.js) 25 行開始宣告一堆的變數、72 行宣告了 fcamelCase 函式...等
+
+---
+=== 2017-02-19 Updated ===
+由於 `var` 是屬於 function scoped (或宣告全域變數)，因此到了 ES6 便有了 [let](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/let) 及 [const](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/const) 屬於 block scoped (也不會汙染全域變數) 新的宣告關鍵字
