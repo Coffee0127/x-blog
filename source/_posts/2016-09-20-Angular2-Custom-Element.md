@@ -1,11 +1,16 @@
 ---
-title: Angular2 自訂元素
-categories: Angular2
+title: Angular 自訂元素
+categories: Angular
 toc: false
 date: 2016-09-20 19:53:24
 tags:
-    - Angular2
+    - Angular
     - JavaScript
+---
+=== 2017-04-03 Updated ===
+配合 Angular 正名，因此 Angular 1.x ==> AngularJS，Angular 2.x 之後的版本 ==> Angular
+修改文章標題 & 分類，內文仍維持原樣 ~~絕對不是偷懶~~
+
 ---
 [Angular2](https://angular.io/) 終於在 2016-09-15 發布正式版本，
 
