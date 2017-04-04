@@ -48,11 +48,14 @@ inline css & template 有醒目標示、自動完成及 hover 提示 *(理由同
 檔案路徑的 Intellisense，同樣不僅用於 Angular，拿來寫 JavaScript / HTML / CSS 也是很棒的 = ˇ =
 {% img inline http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/path-intelisense_ge4e0u.gif %}
 
-### [Angular Language Service](https://github.com/angular/vscode-ng-language-service)
+### [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template&showReviewDialog=true)
 這個不僅能檢查 Template 中的錯誤，也可以提供更完善的 IntelliSense 提示
 不過要注意，若 Angular 專案路徑有任何一層「非英文」的路徑名稱，就會讓 Angular Language Service 失效！
-安裝方法可以參考 [Will 保哥](https://www.facebook.com/will.fans) 影片教學
-{% youtube 3hUAYNzgzYQ %}
+~~安裝方法可以參考 [Will 保哥](https://www.facebook.com/will.fans) 影片教學 https://www.youtube.com/watch?v=3hUAYNzgzYQ~~
+=== 2017-04-04 Updated ===
+VSCode Marketplace 上架囉，不過目前版本(0.1.1)需要 `@angular/language-service@4.1.0-beta` 和 `typescript@2.1.5`
+若未升級到 Angular 4.x 的專案需要自行安裝 dependency
+*Angular 4.x 專案完全相容 Angular 2.x，這麼好康的事情還不快升級!!XD*
 
 ### Reference
 * [Top 10 Angular VS Code Extensions](http://devboosts.com/2017/02/08/top-10-vs-code-extensions/index.html)
