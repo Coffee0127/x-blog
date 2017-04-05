@@ -59,3 +59,4 @@ VSCode Marketplace 上架囉，不過目前版本(0.1.1)需要 `@angular/languag
 
 ### Reference
 * [Top 10 Angular VS Code Extensions](http://devboosts.com/2017/02/08/top-10-vs-code-extensions/index.html)
+* [開發 Angular 2 必備 VSCode 擴充套件](https://paper.dropbox.com/doc/-Angular-2-VSCode-Kh2w3saOyZtJSHawFoBem)
