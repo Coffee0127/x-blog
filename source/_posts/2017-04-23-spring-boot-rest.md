@@ -1,5 +1,5 @@
 ---
-title: 使用 SpringBoot 建立 RESTFul 程式
+title: 使用 SpringBoot 建立 RESTful 程式
 categories: SpringBoot
 toc: false
 date: 2017-04-23 12:38:11
@@ -60,7 +60,7 @@ server:
 
 ### 設定 RestController
 程式碼跟之前寫 SpringMVC 類似，不過 Spring 有提供許多新的 Annotation 幫助我們簡化程式碼，如 4.0 之後可使用 `@RestController` 以簡化 `@Controller` 及 `@ResponseBody`
-透過 `@requestMapping` 設定 RESTFul API 的路徑
+透過 `@requestMapping` 設定 RESTful API 的路徑
 ```java
 @RestController
 @RequestMapping("/api/cars")
