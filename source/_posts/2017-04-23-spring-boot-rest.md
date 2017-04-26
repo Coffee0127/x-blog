@@ -1,6 +1,6 @@
 ---
 title: 使用 SpringBoot 建立 RESTful 程式
-categories: SpringBoot
+categories: Spring
 toc: false
 date: 2017-04-23 12:38:11
 tags:
