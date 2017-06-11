@@ -12,7 +12,7 @@ tags:
 1. 透過 Angular CLI 建立專案 `ng new SampleProject --routing`
     `--routing` 加入路由機制，會自動建立 `app-routing.module.ts`
 2. 透過 Angular CLI 建立元件 `ng g c pages/page1 --spec false` 及 `ng g c pages/page2 --spec false` 在 pages 下建立兩個 Component
-3. 修改 `app-routing.module.ts` 設定路由
+3. 修改 `app-routing.module.ts` 設定路由<!--more-->
 {% img inline /2017/04/24/Angular-simple-routing/step3.png %}
 4. 修改 `app.component.html` 加入路由連結 及 路由插座(?XD)
   `[routerLinkActiveOptions]="{ exact: true }"` 必須是根路徑才套用 active class

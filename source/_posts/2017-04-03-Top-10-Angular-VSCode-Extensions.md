@@ -10,7 +10,7 @@ tags:
 **※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 http://devboosts.com **
 
 ### [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
-可針對不同的 bracket 加上不同的顏色，我覺得這個不僅用於 Angular，拿來寫 JavaScript 也是很棒的 = ˇ =
+可針對不同的 bracket 加上不同的顏色，我覺得這個不僅用於 Angular，拿來寫 JavaScript 也是很棒的 = ˇ =<!--more-->
 {% img inline http://res.cloudinary.com/dk1rn2kmf/image/upload/v1486523096/bracket-colorizer_cicdeq.gif %}
 
 ### [HTML CSS Class Completion](https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion)

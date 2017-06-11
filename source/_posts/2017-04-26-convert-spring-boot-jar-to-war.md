@@ -15,7 +15,7 @@ tags:
 在 [使用 SpringBoot 建立 RESTful 程式](/blog/2017/04/23/spring-boot-rest/) 時，有建立了一個簡單的 SpringMVC 程式，但是打包出來的結果是 jar 檔，接下來就是將其打包成為 war 檔，使得能夠佈署在我們現有的 Servlet Container 上
 
 ### 加入 [Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/1.5.x/maven-plugin/)
-[Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/1.5.x/maven-plugin/) 讓 Maven 能夠支援 SpringBoot，使 SpringBoot 專案能打包為可執行的 jar 檔或 war 檔
+[Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/1.5.x/maven-plugin/) 讓 Maven 能夠支援 SpringBoot，使 SpringBoot 專案能打包為可執行的 jar 檔或 war 檔<!--more-->
 僅需於 pom.xml 中加入以下設定即可
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

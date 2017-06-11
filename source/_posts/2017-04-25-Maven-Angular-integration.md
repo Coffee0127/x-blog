@@ -13,6 +13,8 @@ tags:
 
 不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 [透過 Angular 路由建立 SPA 網站](/2017/04/24/Angular-simple-routing/))
 
+<!--more-->
+
 ### 設定 [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
 在 `<plugins>` 內加入 [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
 作者建議是使用最新版的 (可至 https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ 查閱最新版本)
