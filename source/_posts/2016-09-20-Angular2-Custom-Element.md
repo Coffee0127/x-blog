@@ -5,7 +5,6 @@ toc: false
 date: 2016-09-20 19:53:24
 tags:
     - Angular
-    - JavaScript
 ---
 === 2017-04-03 Updated ===
 配合 Angular 正名，因此 Angular 1.x ==> AngularJS，Angular 2.x 之後的版本 ==> Angular
