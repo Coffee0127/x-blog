@@ -25,6 +25,10 @@ tags:
             <groupId>com.github.eirslett</groupId>
             <artifactId>frontend-maven-plugin</artifactId>
             <version>1.4</version>
+            <configuration>
+                <installDirectory>${project.basedir}</installDirectory>
+                <workingDirectory>front</workingDirectory>
+            </configuration>
             <executions>
                 <!-- 後續介紹... -->
             </executions>
@@ -32,12 +36,16 @@ tags:
     </plugins>
 </build>
 ```
+* `<workingDirectory>` 指向 `package.json` 所在目錄，小弟這邊指向 [Angular 呼叫遠端 API](/blog/2017/04/23/Angular-proxy-to-backend-rest/) 時建立的 `front` 資料夾
+* 透過 `<installDirectory`> 指定檔案下載路徑，預設會在 `${project.basedir}` 建立 `node` 資料夾
+    + 由於設定了 `<workingDirectory>`，Maven 預設會從 `<workingDirectory>` 下尋找 node & yarn，因此我們必須指定路徑回專案根目錄( `${project.basedir}`)
+
 接著開始加入 `<execution>`
 #### 安裝 node、npm、yarn
 第一步當然是要安裝 NodeJS 及 NPM，不過小弟覺得 yarn 安裝速度快一點，因此是直接把兩個 `<goal>` 寫在一起了XD
 * 透過 `<nodeVersion>`、`<npmVersion>`、`<yarnVersion>` 分別指定版本
+    + 因為 Angular CLI 需要使用到 npm-cli，因此還是必須安裝 npm
 * 透過 `<nodeDownloadRoot>`、`<npmDownloadRoot>`、`<yarnDownloadRoot>` 可以指定下載來源網址 (可用於公司內網環境)
-* 透過 `<installDirectory`> 指定檔案下載路徑，預設會放在 `${project.basedir}/node`
 ```xml
 <execution>
     <id>install node and yarn</id>
@@ -56,23 +64,17 @@ tags:
 #### 安裝 node_modules
 因為在前一步驟有安裝了 yarn，因此這邊的 goal 選擇使用 [Running yarn](https://github.com/eirslett/frontend-maven-plugin#running-yarn)
 *(當然你也可以選擇執行 [Running npm](https://github.com/eirslett/frontend-maven-plugin#running-npm) 或 [Running Grunt](https://github.com/eirslett/frontend-maven-plugin#running-grunt))*
-* `<workingDirectory>` 通常會指向 `package.json` 所在目錄，小弟這邊指向 [Angular 呼叫遠端 API](/blog/2017/04/23/Angular-proxy-to-backend-rest/) 時建立的 `front` 資料夾
-* 設定 `<installDirectory>` 為 `${project.basedir}`
-  由於設定了 `<workingDirectory>`，Maven 預設會從 `<workingDirectory>` 下尋找 node & yarn，因此我們必須指定路徑回專案根目錄( `${project.basedir}`)
 ```xml
 <execution>
     <id>yarn install</id>
     <goals>
         <goal>yarn</goal>
     </goals>
-    <configuration>
-        <installDirectory>${project.basedir}</installDirectory>
-        <workingDirectory>front</workingDirectory>
-    </configuration>
+    <phase>generate-sources</phase>
 </execution>
 ```
 #### 執行 Angular CLI 打包
-這邊執行 [Running npm](https://github.com/eirslett/frontend-maven-plugin#running-npm)，還是要設定 `<installDirectory>`、`<workingDirectory>`
+這邊執行 [Running npm](https://github.com/eirslett/frontend-maven-plugin#running-npm)
 * 透過 `ng build` script 打包 Angular 專案
 * `--pord` 指定打包方式為 production，這邊需特別注意 `--prod` 前面的 **`--`**
   因為這個 `<goal>` 最終會變成 [npm-run-script](https://docs.npmjs.com/cli/run-script)，根據其定義在 `<args>` 之前必須帶額外的兩個 `--`
@@ -88,8 +90,6 @@ tags:
     </goals>
     <phase>generate-sources</phase>
     <configuration>
-        <installDirectory>${project.basedir}</installDirectory>
-        <workingDirectory>front/</workingDirectory>
         <arguments>run ng build -- --prod --base-href /${app.context.name}/</arguments>
     </configuration>
 </execution>
