@@ -84,3 +84,11 @@ _我想新增號碼怎麼辦?_
 
 ## 在資料結構下工夫，就能提高記憶體使用效率
 資料結構的邏輯與上述電話簿相同。當數據儲存在記憶體中，根據目的妥善結構化數據，就能提高使用效率。
+
+## Reference
+* [演算法圖鑑](http://www.books.com.tw/products/0010771263)
+* Algorithms: Explained and Animated
+    * [App Store](https://itunes.apple.com/us/app/algorithms-explained-and-animated/id1047532631)
+    * [Google Play](https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms)
+
+此一系列筆記為閱讀演算法圖鑑後心得，畢竟不是本科系出身，希望能透過撰寫電子檔過程中，對於資料結構、演算法等有進一步認識╰(*´︶`*)╯♡
