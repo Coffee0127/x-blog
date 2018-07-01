@@ -131,6 +131,7 @@ tags:
 ```
 
 ### 修改 Angular http 程式的 `base url`
+<div style="color: red; font-size: 1.5em; font-weight: 100">此作法用於 Angular 2.x，Angular 5.x 之後做法還請參考 [Angular 2.0 升級至 6.0](/blog/2018/07/01/Angular-migrate-from-2-x/#修改-Angular-httpClient-程式的-base-url)</div>
 老實說小弟很不確定這種寫法到底對不對...XD 如果有誤還請各位先進指點
 1. 建立 CustomRequestOptions 元件 `ng g class CustomRequestOptions`
 2. 繼承 [BaseRequestOptions](https://angular.io/docs/ts/latest/api/http/index/BaseRequestOptions-class.html) 並實作 [merge](https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html#!#merge-anchor) 方法
