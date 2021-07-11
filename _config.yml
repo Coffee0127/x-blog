@@ -8,7 +8,7 @@ subtitle: Do the right thing, Do the thing right
 description: To express my feelings, I write them down on my blog.
 author: Bo-Xuan Fan
 language: zh-TW
-timezone:
+timezone: Asia/Taipei
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
