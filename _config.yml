@@ -11,9 +11,8 @@ language: zh-TW
 timezone:
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://coffee0127.github.io/blog/
-root: /blog/
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://coffee0127.github.io/blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -79,7 +78,7 @@ feed:
     limit: 20
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
   repo: https://github.com/Coffee0127/blog.git
