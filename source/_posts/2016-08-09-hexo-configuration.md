@@ -5,7 +5,7 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-經過前兩篇 [Hexo 安裝](</blog/2016/08/08/how-to-install-hexo/) &amp; [Hexo 佈署](</blog/2016/08/09/how-to-deploy-to-git)
+經過前兩篇 {% post_link how-to-install-hexo 'Hexo 安裝' %} & {% post_link how-to-deploy-to-git 'Hexo 佈署' %}
 
 我們已經可以開始編寫 Blog 了<(￣︶￣)>
 

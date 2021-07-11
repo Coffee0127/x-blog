@@ -5,7 +5,7 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-<div style="font-size: 24px;padding-top: 20px;">_“取之於社會，用之於社會”_</div>
+<div style="font-size: 24px;padding-top: 20px;font-style: italic;">“取之於社會，用之於社會”</div>
 
 從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
 
@@ -112,7 +112,7 @@ new_post_name: :year-:month-:day-:title.md
 
 其他說明可再參考官網 [Configuration](https://hexo.io/docs/configuration.html)
 
-接著佈署至 GitHub 請見下一篇 [Hexo 佈署](/blog/2016/08/09/how-to-deploy-to-git)
+接著佈署至 GitHub 請見下一篇 {% post_link how-to-deploy-to-git 'Hexo 佈署' %}
 
 ### Reference
 * [Hexo](https://hexo.io/)

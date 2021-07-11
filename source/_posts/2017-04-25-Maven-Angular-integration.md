@@ -8,8 +8,7 @@ tags:
     - Integration
     - Angular
 ---
-在 [使用 SpringBoot 建立 RESTful 程式](/blog/2017/04/23/spring-boot-rest/) 及 [Angular 呼叫遠端 API](/blog/2017/04/23/Angular-proxy-to-backend-rest/) 已經分別完成**開發時期**前後端串接，
-接下來是透過 Maven Plugin 將前後端程式打包再一起。
+在 {% post_link spring-boot-rest '使用 SpringBoot 建立 RESTful 程式' %} 及 {% post_link Angular-proxy-to-backend-rest 'Angular 呼叫遠端 API' %} 已經分別完成**開發時期**前後端串接， 接下來是透過 Maven Plugin 將前後端程式打包再一起。
 
 不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 [透過 Angular 路由建立 SPA 網站](/2017/04/24/Angular-simple-routing/))
 
@@ -36,7 +35,8 @@ tags:
     </plugins>
 </build>
 ```
-* `<workingDirectory>` 指向 `package.json` 所在目錄，小弟這邊指向 [Angular 呼叫遠端 API](/blog/2017/04/23/Angular-proxy-to-backend-rest/) 時建立的 `front` 資料夾
+
+* `<workingDirectory>` 指向 `package.json` 所在目錄，小弟這邊指向 {% post_link Angular-proxy-to-backend-rest 'Angular 呼叫遠端 API' %} 時建立的 `front` 資料夾
 * 透過 `<installDirectory`> 指定檔案下載路徑，預設會在 `${project.basedir}` 建立 `node` 資料夾
     + 由於設定了 `<workingDirectory>`，Maven 預設會從 `<workingDirectory>` 下尋找 node & yarn，因此我們必須指定路徑回專案根目錄( `${project.basedir}`)
 
@@ -79,9 +79,8 @@ tags:
 * `--pord` 指定打包方式為 production，這邊需特別注意 `--prod` 前面的 **`--`**
   因為這個 `<goal>` 最終會變成 [npm-run-script](https://docs.npmjs.com/cli/run-script)，根據其定義在 `<args>` 之前必須帶額外的兩個 `--`
   小弟畢竟對 NodeJS 不是那麼的熟，當初找 global command 的 `ng build --base-href` 可以正常運作，但是跑 `npm run ng build --base-href` 卻失敗 XD，直到看到這篇 [npm run ng build --base-href /newapp not working](https://github.com/angular/angular-cli/issues/5768) 才恍然大悟ˋ(′ε‵")ˊ
-* 透過 `--base-href /${app.context.name}/` 設定 Angular 路由的 base href
-  Angular CLI 會很聰明地幫我們把 index.html 原本的 `<base href="/">` 替換成 `<base href="/${app.context.name}/">`
-  這邊的 `${app.context.name}` 則是在 [使用 SpringBoot 建立 RESTful 程式](/blog/2017/04/23/spring-boot-rest/) 時候設定的 Maven properties
+* 透過 `--base-href /${app.context.name}/` 設定 Angular 路由的 base href Angular CLI 會很聰明地幫我們把 index.html 原本的 `<base href="/">` 替換成 `<base href="/${app.context.name}/">`
+  這邊的 `${app.context.name}` 則是在 {% post_link spring-boot-rest '使用 SpringBoot 建立 RESTful 程式' %} 時候設定的 Maven properties
 ```xml
 <execution>
     <id>ng build</id>
@@ -131,8 +130,10 @@ tags:
 ```
 
 ### 修改 Angular http 程式的 `base url`
-<div style="color: red; font-size: 1.5em; font-weight: 100">此作法用於 Angular 2.x，Angular 5.x 之後做法還請參考 [Angular 2.0 升級至 6.0](/blog/2018/07/01/Angular-migrate-from-2-x/#修改-Angular-httpClient-程式的-base-url)</div>
+
+<div style="color: red; font-size: 1.5em; font-weight: 100">此作法用於 Angular 2.x，Angular 5.x 之後做法還請參考 <a href="/blog/2018/07/01/Angular-migrate-from-2-x/#修改-Angular-httpClient-程式的-base-url">Angular 2.0 升級至 6.0</a></div>
 老實說小弟很不確定這種寫法到底對不對...XD 如果有誤還請各位先進指點
+
 1. 建立 CustomRequestOptions 元件 `ng g class CustomRequestOptions`
 2. 繼承 [BaseRequestOptions](https://angular.io/docs/ts/latest/api/http/index/BaseRequestOptions-class.html) 並實作 [merge](https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html#!#merge-anchor) 方法
   若是 production 環境下，則將 [Http](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) 所有 '/' 開頭的 URL 加上 context path
@@ -145,8 +146,8 @@ tags:
 2. 執行 `java -jar target\Angular-SpringMVC-Integration-0.0.1-SNAPSHOT.jar` 並連線至 `http://localhost:8080/SampleProject` 即可看到 Angular 路由及 Http 存取皆可正常運作
   \\(￣▽￣)/(\￣▽)/\\(　 　)/\\(▽￣/)\\(￣▽￣)/ 
 
-<span style="font-size: 1.3em">
-*程式碼範例 [Angular-SpringMVC-Integration](https://github.com/Coffee0127/Angular-SpringMVC-Integration)*
+<span style="font-size: 1.3em;font-weight:bold;">
+程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration">Angular-SpringMVC-Integration</a>
 </span>
 
 ### References

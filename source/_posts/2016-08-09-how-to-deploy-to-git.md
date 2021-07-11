@@ -5,7 +5,7 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-接續上一篇 [Hexo 安裝](</blog/2016/08/08/how-to-install-hexo/)
+接續上一篇 {% post_link how-to-install-hexo 'Hexo 安裝' %}
 
 ### 認識 GitHub {% asset_img inline PEO-octocat-0.svg 64 %}
 * [GitHub](https://zh.wikipedia.org/zh-tw/GitHub)
@@ -45,4 +45,5 @@ toc: true
     ```
 
 ### 參考資料
-* [[Hexo] Gtihub 上架 Blog](https://blog.ivanwei.co/2015/10/11/2015-10-11-build-blog-by-hexojs/)
+
+* [[Hexo] Gtihub 上架 Blog](https://blog.ivanwei.co/zh-tw/2015-10-11-build-blog-by-hexojs/)

@@ -10,13 +10,13 @@ Angular 內建的 [Http](https://angular.io/docs/ts/latest/api/http/index/Http-c
 搭配 Angular CLI 工具更可以快速建立 Angular 開發環境，由於前後端會分別開發 (不是說 Eclipse 不好用，是 VSCode 真的太好用...XD)
 因此我們可以透過內建的 proxy 機制，幫助我們在開發時期呼叫遠端 API
 
-<span style="font-size: 1.3em">
-*程式碼範例 [Angular-SpringMVC-Integration](https://github.com/Coffee0127/Angular-SpringMVC-Integration/commit/bec178cc3656973c5159bc1fc838a9f270f05741)*
+<span style="font-size: 1.3em;font-weight:bold;">
+程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/commit/bec178cc3656973c5159bc1fc838a9f270f05741">Angular-SpringMVC-Integration</a>
 </span>
 
 ### 前置動作 - 建立 RESTful 程式
-可以參考 [使用 SpringBoot 建立 RESTful 程式](/blog/2017/04/23/spring-boot-rest/) 建立 RESTful API，
-或是到[政府資料開放平臺](http://data.gov.tw/)或[臺北市政府資料開放平台](http://data.taipei/)尋找可用的API，如[臺北捷運列車到站站名](http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=55ec6d6e-dc5c-4268-a725-d04cc262172b)
+
+可以參考 {% post_link spring-boot-rest '使用 SpringBoot 建立 RESTful 程式' %} 建立 RESTful API， 或是到[政府資料開放平臺](http://data.gov.tw/)或[臺北市政府資料開放平台](http://data.taipei/)尋找可用的API，如[臺北捷運列車到站站名](http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=55ec6d6e-dc5c-4268-a725-d04cc262172b)
 
 ### 建立 Angular 專案
 接著我們在該 Mavne 專案根目錄下，透過 Angular CLI 建立專案 `ng new SampleProject --routing --directory front --skip-git`
