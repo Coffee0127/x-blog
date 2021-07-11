@@ -14,12 +14,10 @@ tags:
 
 <!--more-->
 
-打開 Chrome 開發者工具，切換至 `Sources` 頁籤
-{% img inline /2017/06/11/Angular-debug-with-chrome/chrome-dev-tool-sources.png %}
+打開 Chrome 開發者工具，切換至 `Sources` 頁籤 {% asset_img inline chrome-dev-tool-sources.png %}
 
-從左方資源列表可以看到 `webpack://`，點開並尋找 `.` 資料夾下，即可看到 Angular 專案的 `src` 目錄
-{% img inline /2017/06/11/Angular-debug-with-chrome/webpack-root.png %}
+從左方資源列表可以看到 `webpack://`，點開並尋找 `.` 資料夾下，即可看到 Angular 專案的 `src` 目錄 {% asset_img inline webpack-root.png %}
 
 尋找要進行除錯的程式，設定中斷點，即可使用 Chrome 來進行除錯
 (除錯常見的 Watch、Call Stack 等功能都可在 Chrome 開發者工具中使用)
-{% img inline /2017/06/11/Angular-debug-with-chrome/chrome-debug.png %}
+{% asset_img inline chrome-debug.png %}

@@ -63,36 +63,28 @@ _還好 Github 還有 [LancelotLiu](https://github.com/LancelotLiu) Fork 的版�
 ```
 
 通常這錯誤是憑證認證上發生問題，經過比較以後發現 OpenJDK 的 cacerts 確實少了 Google 憑證鏈的 Root CA憑證 (根憑證)
-{% img inline /2018/11/03/PKIX-path-building-failed/diff.jpg %}
+{% asset_img inline diff.jpg %}
 
 ### 匯出 根憑證
-1. Chrome 連至 <https://www.google.com/> > 點選網址左邊鎖頭 > 憑證
-{% img inline /2018/11/03/PKIX-path-building-failed/export-root-ca-step1.jpg %}
+1. Chrome 連至 <https://www.google.com/> > 點選網址左邊鎖頭 > 憑證 {% asset_img inline export-root-ca-step1.jpg %}
 
-2. 憑證路徑 > 點選最上層根憑證 (即 Google Trust Services - GlobalSign Root CA-R2) > 檢視憑證
-{% img inline /2018/11/03/PKIX-path-building-failed/export-root-ca-step2.jpg %}
+2. 憑證路徑 > 點選最上層根憑證 (即 Google Trust Services - GlobalSign Root CA-R2) > 檢視憑證 {% asset_img inline export-root-ca-step2.jpg %}
 
-3. 詳細資料 > 複製到檔案
-{% img inline /2018/11/03/PKIX-path-building-failed/export-root-ca-step3.jpg %}
-接著按照憑證匯出精靈一步一步匯出憑證，這邊取名為 `globalsignr2ca.cer`
+3. 詳細資料 > 複製到檔案 {% asset_img inline export-root-ca-step3.jpg %} 接著按照憑證匯出精靈一步一步匯出憑證，這邊取名為 `globalsignr2ca.cer`
 
 ### 匯入 根憑證
 #### 方法A: 使用 Java [keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) 
   `keytool -import -alias globalsignr2ca -keystore  %JAVA_HOME%/jre/lib/security/cacerts -file globalsignr2ca.cer`
 
 #### 方法B: 使用 [KeyStore Explorer](https://keystore-explorer.org/)
-1. 開啟 [KeyStore Explorer](https://keystore-explorer.org/)，並點選 "Open an existing KeyStore"，選擇要匯入的 cacerts
-    若要修改 JAVA_HOME 的可以直接點選  "Open the CA Certificates KeyStore"
-    {% img inline /2018/11/03/PKIX-path-building-failed/kse-import-step1.jpg %}
+1. 開啟 [KeyStore Explorer](https://keystore-explorer.org/)，並點選 "Open an existing KeyStore"，選擇要匯入的 cacerts 若要修改 JAVA_HOME 的可以直接點選  "Open the CA Certificates KeyStore"
+   {% asset_img inline kse-import-step1.jpg %}
 2. 輸入 cacerts 密碼，預設應為 `changeit`
-3. 點選 "Import Trusted Certificate" 選擇剛剛匯出的根憑證
-    {% img inline /2018/11/03/PKIX-path-building-failed/kse-import-step3.jpg %}
-4. KeyStore 顯示憑證內容，確認無誤後按 OK
-    {% img inline /2018/11/03/PKIX-path-building-failed/kse-import-step4.jpg %}
-5. KeyStore 詢問是否接受此為信賴憑證，點選 是
-    {% img inline /2018/11/03/PKIX-path-building-failed/kse-import-step5.jpg %}
+3. 點選 "Import Trusted Certificate" 選擇剛剛匯出的根憑證 {% asset_img inline kse-import-step3.jpg %}
+4. KeyStore 顯示憑證內容，確認無誤後按 OK {% asset_img inline kse-import-step4.jpg %}
+5. KeyStore 詢問是否接受此為信賴憑證，點選 是 {% asset_img inline kse-import-step5.jpg %}
 6. 要求輸入 alias，輸入 `globalsignr2ca`
-    {% img inline /2018/11/03/PKIX-path-building-failed/kse-import-step6.jpg %}
+   {% asset_img inline kse-import-step6.jpg %}
 
 再次執行 GCALDaemon 確認可以正常同步了 🎉
 

@@ -21,7 +21,7 @@ _修改程式 -> 切換瀏覽器開發者工具 -> 設置中斷點除錯 -> 切�
 2. 建立 `launch.json`
     * 如果之前已建立過，此步驟可省略
     * 如果沒有 `launch.json`，可輸入指令 `ctrl + p` → `>debuglaunch.json` 並選擇 `Chrome` (VS Code 會自動建立 `.vscode` 資料夾與 `launch.json`)
-      {% img inline /2017/06/11/Angular-debug-with-VS-Code/add-launch-json.gif %}
+      {% asset_img inline add-launch-json.gif %}
 3. 於 `launch.json` 加入以下設定
 ```json
 {
@@ -48,9 +48,9 @@ _修改程式 -> 切換瀏覽器開發者工具 -> 設置中斷點除錯 -> 切�
 4. 透過 `npm start` 啟動 Angular 專案
 5. 按下 `F5` 開始執行除錯 (VS Code 會自動開啟新的 Chrome 瀏覽器)
 6. 開始進行除錯
-    _修改程式 -> 設置中斷點除錯 -> 修改程式 -> ..._
-    {% img inline /2017/06/11/Angular-debug-with-VS-Code/vs-code-debug.gif %}
-    <br>p.s 不需要切換視窗，VS Code 改完 Angular cli 會自動刷新頁面
+   _修改程式 -> 設置中斷點除錯 -> 修改程式 -> ..._
+   {% asset_img inline vs-code-debug.gif %}
+   <br>p.s 不需要切換視窗，VS Code 改完 Angular cli 會自動刷新頁面
 
 ### References
 * [VS Code - Debugger for Chrome](https://github.com/Microsoft/vscode-chrome-debug)

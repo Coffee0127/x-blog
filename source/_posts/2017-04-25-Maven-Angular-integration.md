@@ -136,9 +136,9 @@ tags:
 1. 建立 CustomRequestOptions 元件 `ng g class CustomRequestOptions`
 2. 繼承 [BaseRequestOptions](https://angular.io/docs/ts/latest/api/http/index/BaseRequestOptions-class.html) 並實作 [merge](https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html#!#merge-anchor) 方法
   若是 production 環境下，則將 [Http](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) 所有 '/' 開頭的 URL 加上 context path
-{% img inline /2017/04/25/Maven-Angular-integration/step2.png %}
+{% asset_img inline step2.png %}
 3. 修改 `app.module.ts` 透過 DI 方式注入 CustomRequestOptions 元件
-{% img inline /2017/04/25/Maven-Angular-integration/step3.png %}
+{% asset_img inline step3.png %}
 
 ### 透過 Maven 打包 & 執行
 1. `mvn clean package` 後在 target 資料夾下會有 SpringBoot 的 jar 檔產生
