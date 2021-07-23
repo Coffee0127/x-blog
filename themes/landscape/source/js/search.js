@@ -37,7 +37,7 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
           const articleContentInLowerCase = articleContent.toLowerCase();
           let indexTitle = -1;
           let indexContent = -1;
-          let firstOccur = -1;
+          let indexFirstOccur = -1;
           // only match articles with not empty titles and contents
           if (articleTitleInLowerCase !== '' && articleContentInLowerCase !== '') {
             keywords.forEach(function (keyword, i) {
@@ -50,7 +50,7 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
                   indexContent = 0;
                 }
                 if (i === 0) {
-                  firstOccur = indexContent;
+                  indexFirstOccur = indexContent;
                 }
               }
             });
@@ -58,20 +58,14 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
           // show search results
           if (isMatch) {
             searchResultHtml += `<li><a href="${articleUrl}" class="search-result-title">${articleTitle}</a>`;
-            if (firstOccur >= 0) {
+            if (indexFirstOccur >= 0) {
               // cut out 100 characters
-              let start = firstOccur - 20;
-              let end = firstOccur + 80;
-              if (start < 0) {
-                start = 0;
+              const partialArticleLength = 100;
+              let from = indexFirstOccur - 20;
+              if (from < 0) {
+                from = 0;
               }
-              if (start === 0) {
-                end = 100;
-              }
-              if (end > articleContent.length) {
-                end = articleContent.length;
-              }
-              let matchContent = articleContent.substr(start, end);
+              let matchContent = articleContent.substr(from, partialArticleLength);
               // highlight all keywords
               keywords.forEach(function (keyword) {
                 const regExp = new RegExp(keyword, 'gi');
