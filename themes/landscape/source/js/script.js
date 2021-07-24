@@ -26,9 +26,12 @@
   });
 
   $('.search-form-input').on('blur', function () {
-    startSearchAnim();
-    $searchWrap.removeClass('on');
-    stopSearchAnim();
+    // avoid hyperlink not working
+    setTimeout(function () {
+      startSearchAnim();
+      $searchWrap.removeClass('on');
+      stopSearchAnim();
+    }, 100);
   });
 
   // Share
