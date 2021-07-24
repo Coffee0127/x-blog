@@ -82,7 +82,7 @@ feed:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Coffee0127/x-blog.git
+  repo: https://github.com/Coffee0127/blog.git
   branch: gh-pages
   message:
 
