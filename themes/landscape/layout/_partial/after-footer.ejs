@@ -22,10 +22,10 @@
 <%- js('js/script') %>
 <%- js('js/search') %>
 <script type="text/javascript">
-     var search_path = "<%= config.search.path %>";
-     if (search_path.length == 0) {
-     	search_path = "search.xml";
-     }
-     var path = "<%= config.root %>" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
+var searchPath = "<%= config.search.path %>";
+if (searchPath.length == 0) {
+  searchPath = "search.xml";
+}
+var path = "<%= config.root %>" + searchPath;
+enableLocalSearch(path, 'local-search-input', 'local-search-result');
 </script>
