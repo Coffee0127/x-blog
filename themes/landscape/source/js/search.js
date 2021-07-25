@@ -7,9 +7,13 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
       // get the contents from search data
       const articles = $('entry', xmlResponse).map(function () {
         return {
-          title: $('title', this).text(),
-          content: $('content', this).text(),
-          url: $('url', this).text()
+          title: $('title', this).text().trim(),
+          content: $($('content', this).text())
+            // remove line number block
+            .find('.gutter').remove().end()
+            .text()
+            .trim(),
+          url: $('url', this).text().trim()
         };
       }).get();
       const inputElement = document.getElementById(inputElementId);
@@ -25,17 +29,20 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
         // perform local searching
         articles.forEach(function (article) {
           let isMatch = true;
-          const articleTitle = article.title.trim().toLowerCase();
-          const articleContent = article.content.trim().replace(/<[^>]+>/g, '').toLowerCase();
+          const articleTitle = article.title;
+          const articleContent = article.content;
           const articleUrl = article.url;
+
+          const articleTitleInLowerCase = articleTitle.toLowerCase();
+          const articleContentInLowerCase = articleContent.toLowerCase();
           let indexTitle = -1;
           let indexContent = -1;
           let firstOccur = -1;
           // only match articles with not empty titles and contents
-          if (articleTitle !== '' && articleContent !== '') {
+          if (articleTitleInLowerCase !== '' && articleContentInLowerCase !== '') {
             keywords.forEach(function (keyword, i) {
-              indexTitle = articleTitle.indexOf(keyword);
-              indexContent = articleContent.indexOf(keyword);
+              indexTitle = articleTitleInLowerCase.indexOf(keyword);
+              indexContent = articleContentInLowerCase.indexOf(keyword);
               if (indexTitle < 0 && indexContent < 0) {
                 isMatch = false;
               } else {
@@ -51,7 +58,6 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
           // show search results
           if (isMatch) {
             searchResultHtml += `<li><a href="${articleUrl}" class="search-result-title">${articleTitle}</a>`;
-            const content = article.content.trim().replace(/<[^>]+>/g, '');
             if (firstOccur >= 0) {
               // cut out 100 characters
               let start = firstOccur - 20;
@@ -62,10 +68,10 @@ function enableLocalSearch(path, inputElementId, resultElementId) {
               if (start === 0) {
                 end = 100;
               }
-              if (end > content.length) {
-                end = content.length;
+              if (end > articleContent.length) {
+                end = articleContent.length;
               }
-              let matchContent = content.substr(start, end);
+              let matchContent = articleContent.substr(start, end);
               // highlight all keywords
               keywords.forEach(function (keyword) {
                 const regExp = new RegExp(keyword, 'gi');
