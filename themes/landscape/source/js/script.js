@@ -21,6 +21,7 @@
     startSearchAnim();
     $searchWrap.addClass('on');
     stopSearchAnim(function(){
+      $searchWrap.show();
       $('.search-form-input').focus();
     });
   });
@@ -30,7 +31,9 @@
     setTimeout(function () {
       startSearchAnim();
       $searchWrap.removeClass('on');
-      stopSearchAnim();
+      stopSearchAnim(function () {
+        $searchWrap.hide();
+      });
     }, 100);
   });
 
