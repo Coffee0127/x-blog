@@ -4,19 +4,35 @@ menu:
   Archives: /archives
   About: /about
 rss: /atom.xml
+banner: "images/banner.jpg"
 
 # Content
 excerpt_link: Read More
 fancybox: true
 
+# # Footer
+# copyright: |-
+#   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
+#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
+
+# Footer
+copyright:
+# Need help choosing? Please see...
+# https://creativecommons.org/choose/
+# https://choosealicense.com/
+# You can use html like below...
+# copyright: |-
+#   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></br>
+#   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></br>
+
 # Sidebar
 sidebar: right
 widgets:
-- category
-- tag
-- tagcloud
-- archive
-- recent_posts
+  - category
+  - tag
+  - tagcloud
+  - archive
+  - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
@@ -24,13 +40,14 @@ index_widgets:
 # - tagcloud
 # - archive
 
-# widget behavior
+# Widget behavior
 archive_type: 'monthly'
 show_count: true
+recent_posts_limits: 5
 
 # Miscellaneous
 google_analytics: UA-82226610-1
-favicon: favicon.ico
+favicon: /favicon.ico
 twitter:
 google_plus:
 fb_admins:

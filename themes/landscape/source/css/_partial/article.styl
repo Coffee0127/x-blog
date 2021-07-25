@@ -50,7 +50,7 @@
   padding: 0 article-padding
   p, table
     line-height: line-height
-    margin: line-height 0
+    margin: line-margin 0
   h1, h2, h3, h4, h5, h6
     font-weight: bold
   h1, h2, h3, h4, h5, h6
@@ -63,8 +63,8 @@
       color: color-dark-link
       text-decoration: underline
   ul, ol, dl
-    margin-top: line-height
-    margin-bottom: line-height
+    margin-top: line-margin
+    margin-bottom: line-margin
   img, video
     max-width: 100%
     height: auto
@@ -95,6 +95,7 @@
         margin-bottom: 0
     footer
       font-size: font-size
+      margin: line-height 0
       font-family: font-sans
       cite
         &:before
@@ -152,7 +153,7 @@
   line-height: line-height
   border-top: 1px solid color-border
   padding-top: line-height
-  margin: 0 article-padding article-padding
+  margin: 1em article-padding article-padding
   a
     color: color-grey
     text-decoration: none
@@ -304,13 +305,13 @@ $article-share-link
     background: color-pinterest
     text-shadow: 0 1px darken(color-pinterest, 20%)
 
-.article-share-google
+.article-share-linkedin
   @extend $article-share-link
   &:before
-    content: "\f0d5"
+    content: "\f0e1"
   &:hover
-    background: color-google
-    text-shadow: 0 1px darken(color-google, 20%)
+    background: color-linkedin
+    text-shadow: 0 1px darken(color-linkedin, 20%)
 
 .article-gallery
   background: #000

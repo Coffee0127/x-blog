@@ -5,9 +5,9 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-接續上一篇 [Hexo 安裝](</blog/2016/08/08/how-to-install-hexo/)
+接續上一篇 {% post_link how-to-install-hexo 'Hexo 安裝' %}
 
-### 認識 GitHub {% img inline /2016/08/09/how-to-deploy-to-git/PEO-octocat-0.svg 64 %}
+### 認識 GitHub {% asset_img inline PEO-octocat-0.svg 64 %}
 * [GitHub](https://zh.wikipedia.org/zh-tw/GitHub)
 * [Git達人教你搞懂GitHub基礎觀念](http://www.ithome.com.tw/news/95283)
 
@@ -15,7 +15,7 @@ toc: true
 * [Creating Project Pages manually](https://help.github.com/articles/creating-project-pages-manually/)
 主要目的為替你的 repository 建立一個名為 `gh-pages` 的 branch
 
-小弟規劃如下 {% img inline /2016/08/09/how-to-deploy-to-git/branch.jpg %}
+小弟規劃如下 {% asset_img inline branch.jpg %}
 + master：用來放 Hexo 相關檔案
 + gh-pages：用來放 Hexo 產出之靜態網頁，也就是 Blog
 
@@ -45,4 +45,5 @@ toc: true
     ```
 
 ### 參考資料
-* [[Hexo] Gtihub 上架 Blog](https://blog.ivanwei.co/2015/10/11/2015-10-11-build-blog-by-hexojs/)
+
+* [[Hexo] Gtihub 上架 Blog](https://blog.ivanwei.co/zh-tw/2015-10-11-build-blog-by-hexojs/)

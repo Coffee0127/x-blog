@@ -5,7 +5,7 @@ toc: true
 date: 2016-08-11 23:49:26
 tags: Hexo
 ---
-在 [Hexo 相關設定](/blog/2016/08/09/hexo-configuration/#加入相關文章) 有跟各位介紹過新增“相關文章”功能，
+在 {% post_link hexo-configuration 'Hexo 相關設定' %} 有跟各位介紹過“加入相關文章”功能，
 
 老實說小弟覺得只有標題實在是太空洞了，因此看看原本的 [hexo-list-related-posts](https://github.com/nkmk/hexo-list-related-posts) 是否有相關功能
 
@@ -67,7 +67,8 @@ var striptags = require('striptags');
 ```
 
 ### 加入 `generateAbstract: true`
-修改 `themes/[主题名]/layout/_partial/post/related.ejs`  (在 [Hexo 相關設定](/blog/2016/08/09/hexo-configuration/#加入相關文章) 新增的檔案)
+
+修改 `themes/[主题名]/layout/_partial/post/related.ejs`  (在 {% post_link hexo-configuration 'Hexo 相關設定' %} 新增的檔案)
 ```js
 <%- list_related_posts({maxCount: 5, orderBy: 'random', generateAbstract: true}) %>
 ```

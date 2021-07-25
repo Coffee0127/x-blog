@@ -8,12 +8,11 @@ subtitle: Do the right thing, Do the thing right
 description: To express my feelings, I write them down on my blog.
 author: Bo-Xuan Fan
 language: zh-TW
-timezone:
+timezone: Asia/Taipei
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://coffee0127.github.io/blog/
-root: /blog/
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://coffee0127.github.io/blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -31,7 +30,8 @@ skip_render:
 new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link:
+  enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -79,10 +79,10 @@ feed:
     limit: 20
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Coffee0127/x-blog.git
+  repo: https://github.com/Coffee0127/blog.git
   branch: gh-pages
   message:
 

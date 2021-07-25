@@ -14,45 +14,42 @@ tags:
 以下介紹幾種在 IntelliJ 內修改 Git commit 紀錄的作法 (以 2018.3 為例)
 
 情境：修改 commit log `Commit 3`
-{% img inline /2019/03/06/intellij-reword-git-commit/commit-logs.jpg %}
+{% asset_img inline commit-logs.jpg %}
 <!--more-->
 
 ## git commit
 ### 使用內建 Terminal
-1. 確定 Terminal 已啟用
-{% img inline /2019/03/06/intellij-reword-git-commit/enable-plugins.jpg %}
+1. 確定 Terminal 已啟用 {% asset_img inline enable-plugins.jpg %}
 2. 透過 `Alt + F12` 開啟 Terminal
 3. 輸入 `git commit --amend`
-{% img inline /2019/03/06/intellij-reword-git-commit/terminal-cmd.jpg %}
-4. 接下來就是 vi 畫面，按下小寫 i 後可以編輯內容；編輯完畢後按 `Esc`，接著輸入 `:wq` 即可儲存離開
-{% img inline /2019/03/06/intellij-reword-git-commit/git-vi.jpg %}
+   {% asset_img inline terminal-cmd.jpg %}
+4. 接下來就是 vi 畫面，按下小寫 i 後可以編輯內容；編輯完畢後按 `Esc`，接著輸入 `:wq` 即可儲存離開 {% asset_img inline git-vi.jpg %}
 
 ~~結果第一個就是打指令 (毆)~~
 
 ### Commit 時勾選 Amend commit
-勾選 Amend commit 重新 commit 即可，不過限制檔案內容有修改過
-{% img inline /2019/03/06/intellij-reword-git-commit/commit-changes.jpg %}
+
+勾選 Amend commit 重新 commit 即可，不過限制檔案內容有修改過 {% asset_img inline commit-changes.jpg %}
 
 ~~你也可以選擇 Amend commit 兩次，例如把上圖的 `Commit3` > `Commit31` > `Commit3`，並打上要修正的 commit 紀錄 (超大誤)~~
 
 ## git rebase
 ### 透過 Git rebase
-1. VCS > Git > Rebase...
-  {% img inline /2019/03/06/intellij-reword-git-commit/menu-git-rebase.jpg %}
+1. VCS > Git > Rebase... {% asset_img inline menu-git-rebase.jpg %}
 2. 勾選 Interactive，並且 Onto 設定為 `HEAD~`<br>
-  {% img inline /2019/03/06/intellij-reword-git-commit/git-rebase.jpg %}
+   {% asset_img inline git-rebase.jpg %}
 3. 於 Action 選擇 `reword` 後點選 Start Rebasing<br>
-  {% img inline /2019/03/06/intellij-reword-git-commit/rebasing-commits.jpg %}
+   {% asset_img inline rebasing-commits.jpg %}
 4. 輸入要修正的 Commit 內容後點選 Resume Rebasing<br>
-  {% img inline /2019/03/06/intellij-reword-git-commit/additional-rebase-input.jpg %}
+   {% asset_img inline additional-rebase-input.jpg %}
 
 ### 透過 Version Control reword
 1. View > Tool Windows > Version Control (或透過 `Alt + 9` 開啟)
-  {% img inline /2019/03/06/intellij-reword-git-commit/menu-version-control.jpg %}
+   {% asset_img inline menu-version-control.jpg %}
 2. 右鍵 > Reword... (或透過 `F2`)
-  {% img inline /2019/03/06/intellij-reword-git-commit/version-control-reword.jpg %}
+   {% asset_img inline version-control-reword.jpg %}
 3. 輸入要修正的 Commit 內容後點選 OK<br>
-  {% img inline /2019/03/06/intellij-reword-git-commit/reword-commit.jpg %}
+   {% img inline reword-commit.jpg %}
 
 ## 結語
 雖然 IntelliJ 提供精美 GUI 幫助我們，但本質上還是 Git 指令 (是個易學難精的版控😂)

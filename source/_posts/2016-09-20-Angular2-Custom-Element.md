@@ -17,7 +17,7 @@ tags:
 
 直到今天升級後發現專案直接掛了...XD
 
-{% img inline /2016/09/20/Angular2-Custom-Element/template-parse-errors.jpg %}
+{% asset_img inline template-parse-errors.jpg %}
 
 錯誤訊息很明顯：`'hgroup' is not a known element`
 
@@ -30,7 +30,7 @@ tags:
 ---
 修改 `src/app.module.ts`，使用 `NO_ERRORS_SCHEMA` schema
 
-{% img inline /2016/09/20/Angular2-Custom-Element/import-module.jpg %}
+{% asset_img inline import-module.jpg %}
 
 根據官方說明，schemas 可傳入兩種 `SchemaMetadata`
 * `NO_ERRORS_SCHEMA`：允許任意元素及屬性

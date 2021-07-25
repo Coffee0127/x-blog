@@ -6,14 +6,14 @@ date: 2018-07-01 15:06:43
 tags:
     - Angular
 ---
-在 [透過 Maven 整合 Angular 專案](/blog/2017/04/25/Maven-Angular-integration/) 當時還是使用 Angular 2.4 版
+在 {% post_link Maven-Angular-integration '透過 Maven 整合 Angular 專案' %} 當時還是使用 Angular 2.4 版
 
 隨著今年 5 月 Angular 6 的正式發佈，當然程式也要做出相對應升級
 
 官方提供了 [Angular 升級指南](https://update.angular.io/)，點選 從哪個版本升到哪個版本 以及 專案複雜度 後，即會列出一份 TODO 清單
 
 <!--more-->
-{% img inline /2018/07/01/Angular-migrate-from-2-x/update-guide.jpg %}
+{% asset_img inline update-guide.jpg %}
 
 不過官方並不建議一次跨太多版本，所以還是乖乖從 2.4 -> 4.0 -> 5.0 -> 6.0 這樣逐步升版
 
@@ -65,19 +65,17 @@ tags:
 ```
 ### 修改 Angular httpClient 程式的 base url
 1. 建立 APIInterceptor 服務元件 `ng g s api-interceptor`
-2. 實作 [HttpInterceptor](https://angular.io/api/common/http/HttpInterceptor) 的 [intercept](https://angular.io/api/common/http/HttpInterceptor#intercept) 方法
-若是 production 環境下，則將 [HttpRequest](https://angular.io/api/common/http/HttpRequest) URL 加上 context path
-{% img inline /2018/07/01/Angular-migrate-from-2-x/api-interceptor.jpg %}
-3. 修改 `app.module.ts` 透過 DI 方式注入 APIInterceptor 元件
-{% img inline /2018/07/01/Angular-migrate-from-2-x/app-module.jpg %}
+2. 實作 [HttpInterceptor](https://angular.io/api/common/http/HttpInterceptor) 的 [intercept](https://angular.io/api/common/http/HttpInterceptor#intercept) 方法 若是 production 環境下，則將 [HttpRequest](https://angular.io/api/common/http/HttpRequest) URL 加上 context path {% asset_img inline api-interceptor.jpg %}
+3. 修改 `app.module.ts` 透過 DI 方式注入 APIInterceptor 元件 {% asset_img inline app-module.jpg %}
 
 ### 透過 Maven 打包 & 執行
-可參考之前文章 [透過 Maven 整合 Angular 專案](/blog/2017/04/25/Maven-Angular-integration/#%E9%80%8F%E9%81%8E-Maven-%E6%89%93%E5%8C%85-amp-%E5%9F%B7%E8%A1%8C)
 
-<span style="font-size: 1.3em">
-*程式碼範例 [Angular-SpringMVC-Integration](https://github.com/Coffee0127/Angular-SpringMVC-Integration)*
+可參考之前文章 {% post_link Maven-Angular-integration '透過 Maven 整合 Angular 專案' %}
+
+<span style="font-size: 1.3em;font-weight:bold;">
+程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration2">Angular-SpringMVC-Integration</a>
 </span>
-(原本 2.4 版本移到分支 [angular2.x](https://github.com/Coffee0127/Angular-SpringMVC-Integration/tree/angular2.x))
+(原本 2.4 版本移到分支 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/tree/angular2.x">angular2.x</a>)
 
 ---
 ### References

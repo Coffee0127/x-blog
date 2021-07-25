@@ -5,6 +5,9 @@ toc: false
 date: 2016-08-10 21:29:09
 tags: Hexo
 ---
+=== 2021-07-11 Updated === Hexo 更新後此問題已修正囉
+
+---
 今天想來試試看分享功能，結果 FB 連結分享出來的卻是 404....XD
 
 看了一下分享的網址 https://coffee0127.github.io/blog/blog/2016/08/09/hexo-configuration/

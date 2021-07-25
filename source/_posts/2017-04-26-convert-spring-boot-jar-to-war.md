@@ -8,11 +8,11 @@ tags:
     - SpringBoot
     - Maven
 ---
-<span style="font-size: 1.3em">
-*程式碼範例 [Angular-SpringMVC-Integration](https://github.com/Coffee0127/Angular-SpringMVC-Integration/commit/ae4bcecdbec04b3f5373d58364b1bdb1336d7a32)*
+<span style="font-size: 1.3em;font-weight:bold;">
+程式碼範例 <a href="https://github.com/Coffee0127/Angular-SpringMVC-Integration/commit/ae4bcecdbec04b3f5373d58364b1bdb1336d7a32">Angular-SpringMVC-Integration</a>
 </span>
 
-在 [使用 SpringBoot 建立 RESTful 程式](/blog/2017/04/23/spring-boot-rest/) 時，有建立了一個簡單的 SpringMVC 程式，但是打包出來的結果是 jar 檔，接下來就是將其打包成為 war 檔，使得能夠佈署在我們現有的 Servlet Container 上
+在 {% post_link spring-boot-rest '使用 SpringBoot 建立 RESTful 程式' %} 時，有建立了一個簡單的 SpringMVC 程式，但是打包出來的結果是 jar 檔，接下來就是將其打包成為 war 檔，使得能夠佈署在我們現有的 Servlet Container 上
 
 ### 加入 [Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/1.5.x/maven-plugin/)
 [Spring Boot Maven plugin](http://docs.spring.io/spring-boot/docs/1.5.x/maven-plugin/) 讓 Maven 能夠支援 SpringBoot，使 SpringBoot 專案能打包為可執行的 jar 檔或 war 檔<!--more-->

@@ -76,8 +76,7 @@ function sleep(seconds) {
 對應清除測量結果，則是透過 [performance.clearMeasures()](https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMeasures)
 
 ### 瀏覽器不支援怎麼辦？
-根據 MDN 上面所寫，各瀏覽器支援度如下
-{% img inline /2016/10/18/User-Timing-API/browser-compatibility.jpg %}
+根據 MDN 上面所寫，各瀏覽器支援度如下 {% asset_img inline browser-compatibility.jpg %}
 
 不過還好已經有人寫好類似的 API 程式了：[user-timing-rum.js](https://gist.github.com/pmeenan/5902672)
 

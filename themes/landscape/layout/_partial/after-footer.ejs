@@ -6,28 +6,26 @@
   <% } %>
   (function(){
     var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
 <% } %>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<%- js('//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js') %>
 
 <% if (theme.fancybox){ %>
-  <%- css('fancybox/jquery.fancybox') %>
-  <%- js('fancybox/jquery.fancybox.pack') %>
+  <%- js('fancybox/jquery.fancybox.min.js') %>
 <% } %>
 
 <%- js('js/script') %>
 <%- js('js/search') %>
 <script type="text/javascript">
-     var search_path = "<%= config.search.path %>";
-     if (search_path.length == 0) {
-     	search_path = "search.xml";
-     }
-     var path = "<%= config.root %>" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
+var searchPath = "<%= config.search.path %>";
+if (searchPath.length == 0) {
+  searchPath = "search.xml";
+}
+var path = "<%= config.root %>" + searchPath;
+enableLocalSearch(path, 'local-search-input', 'local-search-result');
 </script>

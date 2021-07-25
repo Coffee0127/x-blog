@@ -5,7 +5,7 @@ categories: Hexo
 tags: Hexo
 toc: true
 ---
-<div style="font-size: 24px;padding-top: 20px;">_“取之於社會，用之於社會”_</div>
+<div style="font-size: 24px;padding-top: 20px;font-style: italic;">“取之於社會，用之於社會”</div>
 
 從土木工程轉行 Key-in 人員也三年多了，現在才開始寫 Blog 會不會太慢 (￣□￣|||)a
 
@@ -93,17 +93,13 @@ timezone: # 網站時區，預設使用電腦時區
 ```
 
 #### URL
-這邊要注意 `url` 跟 `root`，當你的網站是放置於子資料夾下時，例如 `http://yoursite.com/child`，
-請將 url 設定為 `http://yoursite.com/child`，root 則設定為 `/child/`。
-note: 子資料夾會有分享連結失效問題，解決方法參考 [Hexo 分享連結失效](/blog/2016/08/10/hexo-share-link-fix/)
 
 ```yml
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://coffee0127.github.io/blog/ #網站的網址
-root: /blog/    #網站的根目錄
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: https://coffee0127.github.io/blog  #網站的網址
 permalink: :year/:month/:day/:title/    # 文章永久連結的格式
-permalink_defaults:     # 永久連結中各區段的預設值，小弟沒試過XD
+permalink_defaults:                     # 永久連結中各區段的預設值，小弟沒試過XD
 ```
 
 #### Writing
@@ -116,7 +112,7 @@ new_post_name: :year-:month-:day-:title.md
 
 其他說明可再參考官網 [Configuration](https://hexo.io/docs/configuration.html)
 
-接著佈署至 GitHub 請見下一篇 [Hexo 佈署](/blog/2016/08/09/how-to-deploy-to-git)
+接著佈署至 GitHub 請見下一篇 {% post_link how-to-deploy-to-git 'Hexo 佈署' %}
 
 ### Reference
 * [Hexo](https://hexo.io/)

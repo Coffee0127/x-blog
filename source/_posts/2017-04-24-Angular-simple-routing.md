@@ -13,14 +13,13 @@ tags:
     `--routing` 加入路由機制，會自動建立 `app-routing.module.ts`
 2. 透過 Angular CLI 建立元件 `ng g c pages/page1 --spec false` 及 `ng g c pages/page2 --spec false` 在 pages 下建立兩個 Component
 3. 修改 `app-routing.module.ts` 設定路由<!--more-->
-{% img inline /2017/04/24/Angular-simple-routing/step3.png %}
+   {% asset_img inline step3.png %}
 4. 修改 `app.component.html` 加入路由連結 及 路由插座(?XD)
-  `[routerLinkActiveOptions]="{ exact: true }"` 必須是根路徑才套用 active class
-{% img inline /2017/04/24/Angular-simple-routing/step4.png %}
+   `[routerLinkActiveOptions]="{ exact: true }"` 必須是根路徑才套用 active class {% asset_img inline step4.png %}
 5. 修改 `app.component.css` 加入 active class，利於辨識路由運作<br>
-{% img inline /2017/04/24/Angular-simple-routing/step5.png %}
+   {% asset_img inline step5.png %}
 6. 透過 `npm start` 確認實際運作情形<br>
-{% img inline /2017/04/24/Angular-simple-routing/step6.gif %}
+   {% asset_img inline step6.gif %}
 
 ### References
 * [ROUTING & NAVIGATION

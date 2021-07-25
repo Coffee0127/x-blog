@@ -5,13 +5,13 @@
       <h1 id="logo-wrap">
         <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
       </h1>
-      <% if (theme.subtitle){ %>
+      <% if (theme.subtitle || config.subtitle){ %>
         <h2 id="subtitle-wrap">
-          <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
+          <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle || config.subtitle %></a>
         </h2>
       <% } %>
     </div>
-    <div id="header-inner" class="inner ovf-h">
+    <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         <% for (var i in theme.menu){ %>
@@ -23,7 +23,7 @@
         <a id="fb-link" class="nav-icon" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
         <a id="github-link" class="nav-icon" href="https://github.com/Coffee0127" title="GitHub"></a>
         <% if (theme.rss){ %>
-          <a id="nav-rss-link" class="nav-icon" href="<%=url_for(theme.rss)%>" title="<%= __('rss_feed') %>"></a>
+          <a id="nav-rss-link" class="nav-icon" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>"></a>
         <% } %>
         <a id="nav-search-btn" class="nav-icon" title="<%= __('search') %>"></a>
         </nav>
