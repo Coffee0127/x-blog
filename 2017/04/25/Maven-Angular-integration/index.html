@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>透過 Maven 整合 Angular 專案 | Xuan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="在 使用 SpringBoot 建立 RESTful 程式 及 Angular 呼叫遠端 API 已經分別完成開發時期前後端串接， 接下來是透過 Maven Plugin 將前後端程式打包再一起。 不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 透過 Angular 路由建立 SPA 網站)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="透過 Maven 整合 Angular 專案">
+<meta property="og:url" content="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/index.html">
+<meta property="og:site_name" content="Xuan&#39;s Blog">
+<meta property="og:description" content="在 使用 SpringBoot 建立 RESTful 程式 及 Angular 呼叫遠端 API 已經分別完成開發時期前後端串接， 接下來是透過 Maven Plugin 將前後端程式打包再一起。 不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 透過 Angular 路由建立 SPA 網站)">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/step2.png">
+<meta property="og:image" content="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/step3.png">
+<meta property="article:published_time" content="2017-04-24T16:07:30.000Z">
+<meta property="article:modified_time" content="2024-09-13T09:53:40.054Z">
+<meta property="article:author" content="Bo-Xuan Fan">
+<meta property="article:tag" content="Angular">
+<meta property="article:tag" content="Maven">
+<meta property="article:tag" content="Integration">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/step2.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82226610-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Xuan&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">Do the right thing, Do the thing right</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="linkedin-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/bo-xuan-fan" title="Linkedin"></a>
+        <a id="fb-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
+        <a id="github-link" class="nav-icon" target="_blank" rel="noopener" href="https://github.com/Coffee0127" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+        </nav>
+        <div id="search-form-wrap">
+          <div id="site_search" class="search-form">
+            <input id="local-search-input" type="search" name="q" results="0" class="form-control search-form-input" placeholder="Search" />
+            <span class="search-form-submit"></span>
+            <div id="local-search-result"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Maven-Angular-integration" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2017/04/25/Maven-Angular-integration/" class="article-date">
+  <time class="dt-published" datetime="2017-04-24T16:07:30.000Z" itemprop="datePublished">2017-04-25</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Maven/">Maven</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  <h1 class="p-name article-title" itemprop="name">
+    <a  href="/blog/2017/04/25/Maven-Angular-integration/">透過 Maven 整合 Angular 專案</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目錄</strong>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-frontend-maven-plugin"><span class="toc-number">1.</span> <span class="toc-text">設定 frontend-maven-plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-node%E3%80%81npm%E3%80%81yarn"><span class="toc-number">1.1.</span> <span class="toc-text">安裝 node、npm、yarn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-node-modules"><span class="toc-number">1.2.</span> <span class="toc-text">安裝 node_modules</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%B7%E8%A1%8C-Angular-CLI-%E6%89%93%E5%8C%85"><span class="toc-number">1.3.</span> <span class="toc-text">執行 Angular CLI 打包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-maven-resources-plugin"><span class="toc-number">2.</span> <span class="toc-text">設定 maven-resources-plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-Angular-http-%E7%A8%8B%E5%BC%8F%E7%9A%84-base-url"><span class="toc-number">3.</span> <span class="toc-text">修改 Angular http 程式的 base url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%8F%E9%81%8E-Maven-%E6%89%93%E5%8C%85-amp-%E5%9F%B7%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">透過 Maven 打包 &amp; 執行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+          </div>
+        
+        
+        
+          <p>在 <a href="/blog/2017/04/23/spring-boot-rest/" title="使用 SpringBoot 建立 RESTful 程式">使用 SpringBoot 建立 RESTful 程式</a> 及 <a href="/blog/2017/04/23/Angular-proxy-to-backend-rest/" title="Angular 呼叫遠端 API">Angular 呼叫遠端 API</a> 已經分別完成<strong>開發時期</strong>前後端串接， 接下來是透過 Maven Plugin 將前後端程式打包再一起。</p>
+<p>不過為了增加程式的真實性，先加入兩個頁面以驅動 Angular 路由機制 (可參考 <a href="/2017/04/24/Angular-simple-routing/">透過 Angular 路由建立 SPA 網站</a>)</p>
+<span id="more"></span>
+
+<h3 id="設定-frontend-maven-plugin"><a href="#設定-frontend-maven-plugin" class="headerlink" title="設定 frontend-maven-plugin"></a>設定 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a></h3><p>在 <code>&lt;plugins&gt;</code> 內加入 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a><br>作者建議是使用最新版的 (可至 <a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/">https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/</a> 查閱最新版本)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.eirslett<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>frontend-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">installDirectory</span>&gt;</span>$&#123;project.basedir&#125;<span class="tag">&lt;/<span class="name">installDirectory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">workingDirectory</span>&gt;</span>front<span class="tag">&lt;/<span class="name">workingDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 後續介紹... --&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;workingDirectory&gt;</code> 指向 <code>package.json</code> 所在目錄，小弟這邊指向 <a href="/blog/2017/04/23/Angular-proxy-to-backend-rest/" title="Angular 呼叫遠端 API">Angular 呼叫遠端 API</a> 時建立的 <code>front</code> 資料夾</li>
+<li>透過 <code>&lt;installDirectory</code>&gt; 指定檔案下載路徑，預設會在 <code>$&#123;project.basedir&#125;</code> 建立 <code>node</code> 資料夾<ul>
+<li>由於設定了 <code>&lt;workingDirectory&gt;</code>，Maven 預設會從 <code>&lt;workingDirectory&gt;</code> 下尋找 node &amp; yarn，因此我們必須指定路徑回專案根目錄( <code>$&#123;project.basedir&#125;</code>)</li>
+</ul>
+</li>
+</ul>
+<p>接著開始加入 <code>&lt;execution&gt;</code></p>
+<h4 id="安裝-node、npm、yarn"><a href="#安裝-node、npm、yarn" class="headerlink" title="安裝 node、npm、yarn"></a>安裝 node、npm、yarn</h4><p>第一步當然是要安裝 NodeJS 及 NPM，不過小弟覺得 yarn 安裝速度快一點，因此是直接把兩個 <code>&lt;goal&gt;</code> 寫在一起了XD</p>
+<ul>
+<li>透過 <code>&lt;nodeVersion&gt;</code>、<code>&lt;npmVersion&gt;</code>、<code>&lt;yarnVersion&gt;</code> 分別指定版本<ul>
+<li>因為 Angular CLI 需要使用到 npm-cli，因此還是必須安裝 npm</li>
+</ul>
+</li>
+<li>透過 <code>&lt;nodeDownloadRoot&gt;</code>、<code>&lt;npmDownloadRoot&gt;</code>、<code>&lt;yarnDownloadRoot&gt;</code> 可以指定下載來源網址 (可用於公司內網環境)<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>install node and yarn<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>install-node-and-npm<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>install-node-and-yarn<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">nodeVersion</span>&gt;</span>v6.10.0<span class="tag">&lt;/<span class="name">nodeVersion</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">npmVersion</span>&gt;</span>3.10.10<span class="tag">&lt;/<span class="name">npmVersion</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">yarnVersion</span>&gt;</span>v0.22.0<span class="tag">&lt;/<span class="name">yarnVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="安裝-node-modules"><a href="#安裝-node-modules" class="headerlink" title="安裝 node_modules"></a>安裝 node_modules</h4>因為在前一步驟有安裝了 yarn，因此這邊的 goal 選擇使用 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin#running-yarn">Running yarn</a></li>
+<li>(當然你也可以選擇執行 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin#running-npm">Running npm</a> 或 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin#running-grunt">Running Grunt</a>)*<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>yarn install<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="執行-Angular-CLI-打包"><a href="#執行-Angular-CLI-打包" class="headerlink" title="執行 Angular CLI 打包"></a>執行 Angular CLI 打包</h4>這邊執行 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin#running-npm">Running npm</a></li>
+<li>透過 <code>ng build</code> script 打包 Angular 專案</li>
+<li><code>--pord</code> 指定打包方式為 production，這邊需特別注意 <code>--prod</code> 前面的 <strong><code>--</code></strong><br>因為這個 <code>&lt;goal&gt;</code> 最終會變成 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/run-script">npm-run-script</a>，根據其定義在 <code>&lt;args&gt;</code> 之前必須帶額外的兩個 <code>--</code><br>小弟畢竟對 NodeJS 不是那麼的熟，當初找 global command 的 <code>ng build --base-href</code> 可以正常運作，但是跑 <code>npm run ng build --base-href</code> 卻失敗 XD，直到看到這篇 <a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/issues/5768">npm run ng build –base-href /newapp not working</a> 才恍然大悟ˋ(′ε‵”)ˊ</li>
+<li>透過 <code>--base-href /$&#123;app.context.name&#125;/</code> 設定 Angular 路由的 base href Angular CLI 會很聰明地幫我們把 index.html 原本的 <code>&lt;base href=&quot;/&quot;&gt;</code> 替換成 <code>&lt;base href=&quot;/$&#123;app.context.name&#125;/&quot;&gt;</code><br>這邊的 <code>$&#123;app.context.name&#125;</code> 則是在 <a href="/blog/2017/04/23/spring-boot-rest/" title="使用 SpringBoot 建立 RESTful 程式">使用 SpringBoot 建立 RESTful 程式</a> 時候設定的 Maven properties<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>ng build<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>npm<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>generate-sources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">arguments</span>&gt;</span>run ng build -- --prod --base-href /$&#123;app.context.name&#125;/<span class="tag">&lt;/<span class="name">arguments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>※ 補充說明：此 plugin 不會使用系統已安裝好的 NodeJS，當然可以透過 <code>&lt;installDirectory&gt;</code> 指定含有 node 的系統資料夾</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">installDirectory</span>&gt;</span>C:/iCoding<span class="tag">&lt;/<span class="name">installDirectory</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>執行時會去 C:/iCoding/node 尋找 node 執行檔 (這個路徑可以是透過 symbolic link 建立出來的 XD)</p>
+<h3 id="設定-maven-resources-plugin"><a href="#設定-maven-resources-plugin" class="headerlink" title="設定 maven-resources-plugin"></a>設定 <a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a></h3><p>若 <a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a> 設定正確且運作正常的話，會在 <code>front</code> 下產出 <code>dist</code> 資料夾，並含有打包好的 Angular 專案<br>接著我們只需要透過 <a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-resources-plugin/">maven-resources-plugin</a> 把它複製到 SpringBoot 的 static 資料夾即可<br><em>(如果是 war 檔可以透過 <a target="_blank" rel="noopener" href="https://maven.apache.org/plugins/maven-war-plugin/examples/including-excluding-files-from-war.html">maven-war-plugin</a> 實現)</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-resources-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>copy-angular<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>copy-resources<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>process-resources<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>$&#123;project.build.directory&#125;/classes/static<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>front/dist<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-Angular-http-程式的-base-url"><a href="#修改-Angular-http-程式的-base-url" class="headerlink" title="修改 Angular http 程式的 base url"></a>修改 Angular http 程式的 <code>base url</code></h3><div style="color: red; font-size: 1.5em; font-weight: 100">此作法用於 Angular 2.x，Angular 5.x 之後做法還請參考 <a href="/blog/2018/07/01/Angular-migrate-from-2-x/#修改-Angular-httpClient-程式的-base-url">Angular 2.0 升級至 6.0</a></div>
+老實說小弟很不確定這種寫法到底對不對...XD 如果有誤還請各位先進指點
+
+<ol>
+<li>建立 CustomRequestOptions 元件 <code>ng g class CustomRequestOptions</code></li>
+<li>繼承 <a target="_blank" rel="noopener" href="https://angular.io/docs/ts/latest/api/http/index/BaseRequestOptions-class.html">BaseRequestOptions</a> 並實作 <a target="_blank" rel="noopener" href="https://angular.io/docs/ts/latest/api/http/index/RequestOptions-class.html#!#merge-anchor">merge</a> 方法<br>若是 production 環境下，則將 <a target="_blank" rel="noopener" href="https://angular.io/docs/ts/latest/api/http/index/Http-class.html">Http</a> 所有 ‘/‘ 開頭的 URL 加上 context path<img src="/blog/2017/04/25/Maven-Angular-integration/step2.png" class="inline"></li>
+<li>修改 <code>app.module.ts</code> 透過 DI 方式注入 CustomRequestOptions 元件<img src="/blog/2017/04/25/Maven-Angular-integration/step3.png" class="inline"></li>
+</ol>
+<h3 id="透過-Maven-打包-amp-執行"><a href="#透過-Maven-打包-amp-執行" class="headerlink" title="透過 Maven 打包 &amp; 執行"></a>透過 Maven 打包 &amp; 執行</h3><ol>
+<li><code>mvn clean package</code> 後在 target 資料夾下會有 SpringBoot 的 jar 檔產生</li>
+<li>執行 <code>java -jar target\Angular-SpringMVC-Integration-0.0.1-SNAPSHOT.jar</code> 並連線至 <code>http://localhost:8080/SampleProject</code> 即可看到 Angular 路由及 Http 存取皆可正常運作<br>\(￣▽￣)/(\￣▽)/\(　 　)/\(▽￣/)\(￣▽￣)/ </li>
+</ol>
+<span style="font-size: 1.3em;font-weight:bold;">
+程式碼範例 <a target="_blank" rel="noopener" href="https://github.com/Coffee0127/Angular-SpringMVC-Integration">Angular-SpringMVC-Integration</a>
+</span>
+
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eirslett/frontend-maven-plugin">frontend-maven-plugin</a></li>
+<li><a target="_blank" rel="noopener" href="http://oomusou.io/angular/angular-di/">深入探討 Angular 的 DI 與 Provider</a></li>
+</ul>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/" data-id="cm10jn9un001azskucy7kgx77" data-title="透過 Maven 整合 Angular 專案" class="article-share-link">Share</a>
+      
+        <a href="https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Angular/" rel="tag">Angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Integration/" rel="tag">Integration</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Maven/" rel="tag">Maven</a></li></ul>
+
+    </footer>
+  </div>
+  
+    <article class="article">
+  <div class="article-inner">
+    <div class="article-header">
+        <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
+    </div>
+    <div class="article-entry">
+      <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/blog/2016/09/20/Angular2-Custom-Element/">Angular 自訂元素</a><div class="related-posts-item-abstract">=== 2017-04-03 Updated ===配合 Angular 正名，因此 Angular 1.x ==&gt; AngularJS，Angular 2.x 之後的版本 ==&gt; Angular修改文章標題</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/03/Top-10-Angular-VSCode-Extensions/">【轉錄】Top 10 Angular VS Code Extensions</a><div class="related-posts-item-abstract">※ 本文用於備份好用的 Angular VSCode 外掛及加上小弟對外掛的見解，著作權仍屬 http://devboosts.com
+Bracket Pair Colorizer可針對不同的 bracket 加上不同的</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2018/07/01/Angular-migrate-from-2-x/">Angular 2.0 升級至 6.0</a><div class="related-posts-item-abstract">在 透過 Maven 整合 Angular 專案 當時還是使用 Angular 2.4 版
+隨著今年 5 月 Angular 6 的正式發佈，當然程式也要做出相對應升級
+官方提供了 Angular 升級指南，點選 從哪個</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/23/Angular-proxy-to-backend-rest/">Angular 呼叫遠端 API</a><div class="related-posts-item-abstract">Angular 內建的 Http 可幫助我們呼叫遠端 API，搭配 Angular CLI 工具更可以快速建立 Angular 開發環境，由於前後端會分別開發 (不是說 Eclipse 不好用，是 VSCode 真的太好</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2017/04/26/convert-spring-boot-jar-to-war/">打包 SpringBoot 為 war 檔</a><div class="related-posts-item-abstract">
+程式碼範例 Angular-SpringMVC-Integration
+
+
+在 使用 SpringBoot 建立 RESTful 程式 時，有建立了一個簡單的 SpringMVC 程式，但是打包出來的結果是 jar 檔</div></li></ul>
+    </div>
+  </div>
+</article>
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2017/04/26/convert-spring-boot-jar-to-war/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          打包 SpringBoot 為 war 檔
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2017/04/24/Angular-simple-routing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">透過 Angular 路由建立 SPA 網站</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Angular/">Angular</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Apache-CXF/">Apache CXF</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/">資料結構</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/" rel="tag">Angular</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Apache-CXF/" rel="tag">Apache CXF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/" rel="tag">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Integration/" rel="tag">Integration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Must-Know/" rel="tag">Must-Know</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OpenJDK/" rel="tag">OpenJDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TouchID/" rel="tag">TouchID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/VS-Code/" rel="tag">VS Code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Weblogic/" rel="tag">Weblogic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag">資料結構</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Angular/" style="font-size: 20px;">Angular</a> <a href="/blog/tags/Apache-CXF/" style="font-size: 10px;">Apache CXF</a> <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/blog/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/blog/tags/Integration/" style="font-size: 10px;">Integration</a> <a href="/blog/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/blog/tags/Maven/" style="font-size: 12.5px;">Maven</a> <a href="/blog/tags/Must-Know/" style="font-size: 12.5px;">Must-Know</a> <a href="/blog/tags/OpenJDK/" style="font-size: 10px;">OpenJDK</a> <a href="/blog/tags/Spring/" style="font-size: 12.5px;">Spring</a> <a href="/blog/tags/SpringBoot/" style="font-size: 12.5px;">SpringBoot</a> <a href="/blog/tags/SpringMVC/" style="font-size: 10px;">SpringMVC</a> <a href="/blog/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/blog/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/blog/tags/Weblogic/" style="font-size: 10px;">Weblogic</a> <a href="/blog/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" style="font-size: 15px;">資料結構</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2021/07/25/macOS-use-touchID-to-authenticate-sudo/">在 macOS 上使用 TouchID 來驗證 sudo 密碼</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/03/06/intellij-reword-git-commit/">IntelliJ 修改 Git commit 紀錄</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/11/03/PKIX-path-building-failed/">OpenJDK PKIX path building failed</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/07/01/Angular-migrate-from-2-x/">Angular 2.0 升級至 6.0</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/02/20/ds-stack/">堆疊</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Bo-Xuan Fan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'xuans-blog';
+  
+  var disqus_url = 'https://coffee0127.github.io/blog/2017/04/25/Maven-Angular-integration/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+<script src="/blog/js/search.js"></script>
+
+<script type="text/javascript">
+var searchPath = "search.xml";
+if (searchPath.length == 0) {
+  searchPath = "search.xml";
+}
+var path = "/blog/" + searchPath;
+enableLocalSearch(path, 'local-search-input', 'local-search-result');
+</script>
+
+  </div>
+</body>
+</html>

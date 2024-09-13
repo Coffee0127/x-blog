@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>何謂資料結構 | Xuan&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="決定數據(Data)的順序和位置數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。  當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="何謂資料結構">
+<meta property="og:url" content="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/index.html">
+<meta property="og:site_name" content="Xuan&#39;s Blog">
+<meta property="og:description" content="決定數據(Data)的順序和位置數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。  當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/memory.png">
+<meta property="article:published_time" content="2018-01-20T12:06:42.000Z">
+<meta property="article:modified_time" content="2024-09-13T09:53:40.055Z">
+<meta property="article:author" content="Bo-Xuan Fan">
+<meta property="article:tag" content="資料結構">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/memory.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Xuan&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-82226610-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Xuan&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">Do the right thing, Do the thing right</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="linkedin-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.linkedin.com/in/bo-xuan-fan" title="Linkedin"></a>
+        <a id="fb-link" class="nav-icon" target="_blank" rel="noopener" href="https://www.facebook.com/Boxuan.Fan" title="Facebook"></a>
+        <a id="github-link" class="nav-icon" target="_blank" rel="noopener" href="https://github.com/Coffee0127" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+        </nav>
+        <div id="search-form-wrap">
+          <div id="site_search" class="search-form">
+            <input id="local-search-input" type="search" name="q" results="0" class="form-control search-form-input" placeholder="Search" />
+            <span class="search-form-submit"></span>
+            <div id="local-search-result"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-what-is-data-structure" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2018/01/20/what-is-data-structure/" class="article-date">
+  <time class="dt-published" datetime="2018-01-20T12:06:42.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/">資料結構</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  <h1 class="p-name article-title" itemprop="name">
+    <a  href="/blog/2018/01/20/what-is-data-structure/">何謂資料結構</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">文章目錄</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%BA%E5%AE%9A%E6%95%B8%E6%93%9A-Data-%E7%9A%84%E9%A0%86%E5%BA%8F%E5%92%8C%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">決定數據(Data)的順序和位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E9%9B%BB%E8%A9%B1%E7%B0%BF%E7%9A%84%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E7%82%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">以電話簿的資料結構為例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E5%BA%8F%E4%B8%8A%E5%BE%80%E4%B8%8B%E8%BF%BD%E5%8A%A0"><span class="toc-number">2.1.</span> <span class="toc-text">依序上往下追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E5%A7%93%E5%90%8D%E7%9A%84%E8%81%B2%E6%AF%8D%E9%A0%86%E5%BA%8F%E7%AE%A1%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">依姓名的聲母順序管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E8%87%AA%E5%84%AA%E7%BC%BA%E9%BB%9E"><span class="toc-number">2.3.</span> <span class="toc-text">各自優缺點</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A9%A6%E8%91%97%E7%B5%90%E5%90%88%E5%85%A9%E8%80%85"><span class="toc-number">2.4.</span> <span class="toc-text">試著結合兩者</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%84%8C-%E8%A1%A8"><span class="toc-number">2.4.1.</span> <span class="toc-text">ㄌ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%84%92-%E8%A1%A8"><span class="toc-number">2.4.2.</span> <span class="toc-text">ㄒ 表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%84%A7-%E8%A1%A8"><span class="toc-number">2.4.3.</span> <span class="toc-text">ㄧ 表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E4%B8%8B%E5%B7%A5%E5%A4%AB%EF%BC%8C%E5%B0%B1%E8%83%BD%E6%8F%90%E9%AB%98%E8%A8%98%E6%86%B6%E9%AB%94%E4%BD%BF%E7%94%A8%E6%95%88%E7%8E%87"><span class="toc-number">3.</span> <span class="toc-text">在資料結構下工夫，就能提高記憶體使用效率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+          </div>
+        
+        
+        
+          <h2 id="決定數據-Data-的順序和位置"><a href="#決定數據-Data-的順序和位置" class="headerlink" title="決定數據(Data)的順序和位置"></a>決定數據(Data)的順序和位置</h2><p>數據儲存在電腦的記憶體中，而記憶體如下圖所示，呈現箱子排成一列的形狀，每個箱子都存有一個數據。 <img src="/blog/2018/01/20/what-is-data-structure/memory.png" class="inline"></p>
+<p>當數據儲存在記憶體中時，決定數據的順序和位置的，就是「資料結構」(Data Structure)。</p>
+<span id="more"></span>
+
+<h2 id="以電話簿的資料結構為例"><a href="#以電話簿的資料結構為例" class="headerlink" title="以電話簿的資料結構為例"></a>以電話簿的資料結構為例</h2><h3 id="依序上往下追加"><a href="#依序上往下追加" class="headerlink" title="依序上往下追加"></a>依序上往下追加</h3><p>在手機不盛行的年代，記下朋友電話就只能用紙筆記錄，通常都會每得到一組電話號碼，都由上往下依序寫在紙上。</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>楊美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>駱欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>許如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>林秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>當要找「王珮雯」的電話時，因為資訊只是單純的以先後順序排列，所以不知道「王珮雯」的電話寫在哪裡，只能從_頭_開始尋找<br>(或是從_最後_開始，或是_隨機_尋找，但是非常耗時)</p>
+<p>如果只有幾組電話或許可以馬上找到，但是當有數百、數千時可就非常麻煩了…ヾ(<em>´∀｀</em>)ﾉ</p>
+<h3 id="依姓名的聲母順序管理"><a href="#依姓名的聲母順序管理" class="headerlink" title="依姓名的聲母順序管理"></a>依姓名的聲母順序管理</h3><p>若換用注音(ㄅ、ㄆ、ㄇ)來管理電話號碼，因為姓名依照聲母順序排列，所以這類數據具有「結構」</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>林(ㄌㄧㄣˊ)秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>駱(ㄌㄨㄛˋ)欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>許(ㄒㄩˇ)如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>楊(ㄧㄤˊ)美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>注意到，因「林秀昌」與「駱欣怡」聲母一樣(皆為ㄌ)，因此再以第二個注音做排序</p>
+<p>如此一來，從姓氏第一個字就大概能推測出位在電話簿何處位置，能較輕鬆找到對方電話號碼了</p>
+<p><em>我想新增號碼怎麼辦?</em><br>今天認識了一位李(ㄌㄧˇ)安琪，要把電話號碼加進電話簿時，必須加在電話簿的第一順位<br>因此必須把所有電話號碼皆往下移動一行，才能將李安琪的電話插入電話簿第一行</p>
+<p>依序進行「電話號碼皆往下移動一行」，假設每10秒可移動1筆資料，1分鐘才可移動6筆資料，一小時也才不過360筆資料….</p>
+<h3 id="各自優缺點"><a href="#各自優缺點" class="headerlink" title="各自優缺點"></a>各自優缺點</h3><p>依序上往下追加：追加數據時相當容易，但查找費力。反之，根據姓名的聲母順序便於查找，但是不利於追加數據<br>一本電話簿，多種紀錄方式，各自精采，要用哪一種，取決於怎麼使用電話簿。<br>頻繁增加資訊卻不太需要查找(使用前者) vs 建立完成後幾乎不再更新 (使用後者)</p>
+<h3 id="試著結合兩者"><a href="#試著結合兩者" class="headerlink" title="試著結合兩者"></a>試著結合兩者</h3><p>例如將注音(ㄅ、ㄆ、ㄇ…)每一個聲母分成獨立的表格，在同一個表格中則採用依序上往下追加聯絡資訊。</p>
+<h4 id="ㄌ-表"><a href="#ㄌ-表" class="headerlink" title="ㄌ 表"></a>ㄌ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>駱欣怡</td>
+<td>0912-345-678</td>
+</tr>
+<tr>
+<td>林秀昌</td>
+<td>0943-218-765</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h4 id="ㄒ-表"><a href="#ㄒ-表" class="headerlink" title="ㄒ 表"></a>ㄒ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>許如木</td>
+<td>0956-781-234</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<h4 id="ㄧ-表"><a href="#ㄧ-表" class="headerlink" title="ㄧ 表"></a>ㄧ 表</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>電話號碼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>楊美珍</td>
+<td>0987-654-321</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>像這樣，新增聯絡資訊時，只要加在該聲母開頭的表格最末行就好，查找電話時，也只需查找該聲母表格<br>(不過，因為各表格並無特別順序，因此該表仍需整份檢索，但比起整本電話簿查找已省去不少時間)</p>
+<h2 id="在資料結構下工夫，就能提高記憶體使用效率"><a href="#在資料結構下工夫，就能提高記憶體使用效率" class="headerlink" title="在資料結構下工夫，就能提高記憶體使用效率"></a>在資料結構下工夫，就能提高記憶體使用效率</h2><p>資料結構的邏輯與上述電話簿相同。當數據儲存在記憶體中，根據目的妥善結構化數據，就能提高使用效率。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.books.com.tw/products/0010771263">演算法圖鑑</a></li>
+<li>Algorithms: Explained and Animated<ul>
+<li><a target="_blank" rel="noopener" href="https://itunes.apple.com/us/app/algorithms-explained-and-animated/id1047532631">App Store</a></li>
+<li><a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms">Google Play</a></li>
+</ul>
+</li>
+</ul>
+<p>此一系列筆記為閱讀演算法圖鑑後心得，畢竟不是本科系出身，希望能透過撰寫電子檔過程中，對於資料結構、演算法等有進一步認識╰(<em>´︶`</em>)╯♡</p>
+
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/" data-id="cm10jn9up001qzskuh4y2cptl" data-title="何謂資料結構" class="article-share-link">Share</a>
+      
+        <a href="https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/#disqus_thread" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag">資料結構</a></li></ul>
+
+    </footer>
+  </div>
+  
+    <article class="article">
+  <div class="article-inner">
+    <div class="article-header">
+        <h3 class="article-title" style="font-size: 20px;">相關文章</h3>
+    </div>
+    <div class="article-entry">
+      <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/blog/2018/02/20/ds-stack/">堆疊</a><div class="related-posts-item-abstract">後進先出 (LIFO，Last In First Out)同樣屬於資料結構的一種，但是限制了數據的存取方式，必須由上而下依序由新而舊存取
+工廠將餅乾(數據)依序放入餅乾盒(堆疊)內，消費者必須先將後面放入的餅乾(數據)取</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2018/01/25/ds-array/">陣列</a><div class="related-posts-item-abstract">索引 (Index)相較於列表 (List)分散儲存於各個記憶體區塊，陣列則是將所有數據排在連續區塊。 不透過指標存取數據，而是透過索引存取 (由 0 開始)，因此要存取 Red 則是透過 a[2]
+
+
+
+陣列中，數據需</div></li><li class="related-posts-item"><a class="related-posts-link" href="/blog/2018/01/21/ds-list/">列表</a><div class="related-posts-item-abstract">指標列表是資料結構的一種，這類結構的數據排成一直線，便於追加或刪除，但存取數據卻很費時。
+每個「數據」和一個「指標」配對，指向下一個數據在記憶體中的位址 其中，Red 是最後的數據，所以其指標沒有指向任何位址
+
+
+
+列表</div></li></ul>
+    </div>
+  </div>
+</article>
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2018/01/21/ds-list/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          列表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2017/11/12/unmarshalling-error-unexpected-element/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CXF Unmarshalling Error: unexpected element</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分類</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Angular/">Angular</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Apache-CXF/">Apache CXF</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Hexo/">Hexo</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/IntelliJ/">IntelliJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaScript/">JavaScript</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/macOS/">macOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/">資料結構</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Angular/" rel="tag">Angular</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Apache-CXF/" rel="tag">Apache CXF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eclipse/" rel="tag">Eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Integration/" rel="tag">Integration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/IntelliJ/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Java/" rel="tag">Java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Must-Know/" rel="tag">Must-Know</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/OpenJDK/" rel="tag">OpenJDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/TouchID/" rel="tag">TouchID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/VS-Code/" rel="tag">VS Code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Weblogic/" rel="tag">Weblogic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" rel="tag">資料結構</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Angular/" style="font-size: 20px;">Angular</a> <a href="/blog/tags/Apache-CXF/" style="font-size: 10px;">Apache CXF</a> <a href="/blog/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/blog/tags/Git/" style="font-size: 10px;">Git</a> <a href="/blog/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/blog/tags/Integration/" style="font-size: 10px;">Integration</a> <a href="/blog/tags/IntelliJ/" style="font-size: 10px;">IntelliJ</a> <a href="/blog/tags/Java/" style="font-size: 15px;">Java</a> <a href="/blog/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/blog/tags/Maven/" style="font-size: 12.5px;">Maven</a> <a href="/blog/tags/Must-Know/" style="font-size: 12.5px;">Must-Know</a> <a href="/blog/tags/OpenJDK/" style="font-size: 10px;">OpenJDK</a> <a href="/blog/tags/Spring/" style="font-size: 12.5px;">Spring</a> <a href="/blog/tags/SpringBoot/" style="font-size: 12.5px;">SpringBoot</a> <a href="/blog/tags/SpringMVC/" style="font-size: 10px;">SpringMVC</a> <a href="/blog/tags/TouchID/" style="font-size: 10px;">TouchID</a> <a href="/blog/tags/VS-Code/" style="font-size: 12.5px;">VS Code</a> <a href="/blog/tags/Weblogic/" style="font-size: 10px;">Weblogic</a> <a href="/blog/tags/macOS/" style="font-size: 10px;">macOS</a> <a href="/blog/tags/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B/" style="font-size: 15px;">資料結構</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/01/">一月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/11/">十一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/08/">八月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2021/07/25/macOS-use-touchID-to-authenticate-sudo/">在 macOS 上使用 TouchID 來驗證 sudo 密碼</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2019/03/06/intellij-reword-git-commit/">IntelliJ 修改 Git commit 紀錄</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/11/03/PKIX-path-building-failed/">OpenJDK PKIX path building failed</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/07/01/Angular-migrate-from-2-x/">Angular 2.0 升級至 6.0</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/02/20/ds-stack/">堆疊</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Bo-Xuan Fan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'xuans-blog';
+  
+  var disqus_url = 'https://coffee0127.github.io/blog/2018/01/20/what-is-data-structure/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.async = true;
+    dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+<script src="/blog/js/search.js"></script>
+
+<script type="text/javascript">
+var searchPath = "search.xml";
+if (searchPath.length == 0) {
+  searchPath = "search.xml";
+}
+var path = "/blog/" + searchPath;
+enableLocalSearch(path, 'local-search-input', 'local-search-result');
+</script>
+
+  </div>
+</body>
+</html>
