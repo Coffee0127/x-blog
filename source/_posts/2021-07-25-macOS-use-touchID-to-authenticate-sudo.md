@@ -42,3 +42,29 @@ tags:
 4. 開啟新的 Terminal 視窗確認結果 🎉
    {% asset_img inline sudo-request-touchid.png 480 %}
    當然這時候如果按了 Cancel，那一樣會彈出原本要你手動輸入密碼的提示
+
+--
+macOS Sonoma 之後 `/etc/pam.d/sudo` 這個檔案會被系統自動還原
+
+因此我們改為使用 `/etc/pam.d/sudo_local` 這個檔案
+
+```shell
+$ sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+$ sudo vi /etc/pam.d/sudo_local
+```
+
+檔案內容如下
+```
+# sudo_local: local config file which survives system update and is included for sudo
+# uncomment following line to enable Touch ID for sudo
+#auth       sufficient     pam_tid.so
+```
+
+我們只要把第三行 `pam_tid.so` 註解打開即可，因此修改後的內容會長這樣
+```
+# sudo_local: local config file which survives system update and is included for sudo
+# uncomment following line to enable Touch ID for sudo
+auth       sufficient     pam_tid.so
+```
+
+開啟新的 Terminal 視窗確認結果即可 🎉🎉
